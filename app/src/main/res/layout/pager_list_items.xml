@@ -95,11 +95,13 @@
 
             <Button
                 android:id="@+id/choisir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
+                android:background="#363636"
                 android:onClick="choisirArticle"
-                android:text="JE CHOISIS" />
+                android:text="JE CHOISIS"
+                android:textColor="@color/colorWhite" />
 
         </LinearLayout>
 

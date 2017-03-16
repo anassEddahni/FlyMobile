@@ -1,7 +1,8 @@
-package com.example.dit.viewpagerswipe;
+package com.example.dit.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.dit.com.example.dit.entities.DataObject;
+import com.example.dit.viewpagerswipe.R;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 /**
  * Created by DIT on 15/03/2017.
@@ -21,21 +22,21 @@ import java.util.List;
 
 public class CustomArticleAdapter extends PagerAdapter {
     private Context context;
-    private List<DataObject> dataObjectList;
+    private DataObject dataObject;
     private LayoutInflater layoutInflater;
 
     //constructeur
-    public CustomArticleAdapter(Context context, List<DataObject> dataObjectList) {
+    public CustomArticleAdapter(Context context, DataObject dataObject) {
 
         this.context = context;
         this.layoutInflater = (LayoutInflater) this.context.getSystemService(this.context.LAYOUT_INFLATER_SERVICE);
-        this.dataObjectList = dataObjectList;
+        this.dataObject = dataObject;
     }
 
 
     @Override
     public int getCount() {
-        return dataObjectList.get(0).getCategories().size();
+        return dataObject.getCategories().size();
     }
 
     @Override
@@ -48,17 +49,16 @@ public class CustomArticleAdapter extends PagerAdapter {
         View view = this.layoutInflater.inflate(R.layout.article_list_items,container,false);
         ImageView photoArticle = (ImageView) view.findViewById(R.id.photo_article);
         TextView nomArticle = (TextView) view.findViewById(R.id.nom_article);
-        TextView montantArticle = (TextView) view.findViewById(R.id.montant_article);
-        Picasso.with(context).load(this.dataObjectList.get(0).getCategories().get(position).getPhotoUrl()).into(photoArticle);
-
+        //zoomAnimation
         Animation zoomAnimation = AnimationUtils.loadAnimation(context, R.anim.zoom);
-
         photoArticle.startAnimation(zoomAnimation);
 
-        photoArticle.startAnimation(zoomAnimation);
-
-
-
+        TextView montantArticle = (TextView) view.findViewById(R.id.montant_article);
+        Log.d("catgories : ======"+position ,"  "+this.dataObject.toString());
+        Log.d("catgories : ======","  =============================================");
+        Picasso.with(context).load(this.dataObject.getCategories().get(position).getPhotoUrl()).into(photoArticle);
+        nomArticle.setText(this.dataObject.getCategories().get(position).getName());
+        montantArticle.setText(this.dataObject.getCategories().get(position).getMontant());
 
       //  Picasso.with(context).load(this.dataObjectList.get(position).getCategories().get(1).getPhotoUrl()).into(photoArticle);
 
@@ -66,8 +66,11 @@ public class CustomArticleAdapter extends PagerAdapter {
             Picasso.with(context).load(this.dataObjectList.get(position).getCategories().get(j).getPhotoUrl()).into(photoArticle);
         }*/
 
-        nomArticle.setText(this.dataObjectList.get(0).getCategories().get(position).getName());
-        montantArticle.setText(this.dataObjectList.get(0).getCategories().get(position).getMontant());
+
+
+
+
+
         container.addView(view);
         return view;
 

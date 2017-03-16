@@ -18,12 +18,17 @@
         android:id="@+id/nom_article"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/montant_article"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="35dp"/>
 
 </LinearLayout>

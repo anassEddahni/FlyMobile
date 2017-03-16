@@ -1,11 +1,9 @@
-package com.example.dit.viewpagerswipe;
+package com.example.dit.com.example.dit.entities;
 
-import android.graphics.drawable.Drawable;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.widget.ImageView;
+import com.example.dit.com.example.dit.entities.Categories;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +16,6 @@ public class DataObject implements Serializable {
     private String[] listImagePicUrl;
     private Boolean fabFUrl;
     List<Categories> categories;
-
 
     public DataObject(String imageBackgroundUrl, String[] listImagePicUrl,String nom, Boolean fabFUrl) {
         this.nom = nom;
@@ -33,6 +30,10 @@ public class DataObject implements Serializable {
         this.listImagePicUrl = listImagePicUrl;
         this.fabFUrl = fabFUrl;
         this.categories = categories;
+    }
+
+    public DataObject() {
+
     }
 
 
@@ -81,98 +82,18 @@ public class DataObject implements Serializable {
         return listImagePicUrl[index];
     }
 
-
-
     public String getElement(String[] listImagePicUrl, int index ){
         return listImagePicUrl[index];
     }
 
-
+    @Override
+    public String toString() {
+        return "DataObject{" +
+                "nom='" + nom + '\'' +
+                ", imageBackgroundUrl='" + imageBackgroundUrl + '\'' +
+                ", listImagePicUrl=" + Arrays.toString(listImagePicUrl) +
+                ", fabFUrl=" + fabFUrl +
+                ", categories=" + categories +
+                '}';
+    }
 }
-
-
-
-
-    /*private String image1Url;
-    private String image2Url;
-    private String image3Url;
-    private String image4Url;
-    private String image5Url;*/
-
-
-    /*public DataObject(String imageBackgroundUrl, String image1Url, String image2Url, String image3Url, String image4Url, String image5Url, String fabFUrl) {
-        this.imageBackgroundUrl = imageBackgroundUrl;
-        this.image1Url = image1Url;
-        this.image2Url = image2Url;
-        this.image3Url = image3Url;
-        this.image4Url = image4Url;
-        this.image5Url = image5Url;
-        this.fabFUrl = fabFUrl;
-    }
-    /*
-    public String getImage1Url() {
-        return image1Url;
-    }
-
-    public void setImage1Url(String image1Url) {
-        this.image1Url = image1Url;
-    }
-
-    public String getImage2Url() {
-        return image2Url;
-    }
-
-    public void setImage2Url(String image2Url) {
-        this.image2Url = image2Url;
-    }
-
-    public String getImage3Url() {
-        return image3Url;
-    }
-
-    public void setImage3Url(String image3Url) {
-        this.image3Url = image3Url;
-    }
-
-    public String getImage4Url() {
-        return image4Url;
-    }
-
-    public void setImage4Url(String image4Url) {
-        this.image4Url = image4Url;
-    }
-
-    public String getImage5Url() {
-        return image5Url;
-    }
-
-    public void setImage5Url(String image5Url) {
-        this.image5Url = image5Url;
-    }*/
-
-
-
-
-
-
-
-  /*public DataObject(String imageUrl, String imageName) {
-        this.imageUrl = imageUrl;
-        this.imageName = imageName;
-    }
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getImageName() {
-        return imageName;
-    }
-
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-*/

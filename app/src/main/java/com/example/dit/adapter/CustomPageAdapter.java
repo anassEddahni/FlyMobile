@@ -1,8 +1,7 @@
-package com.example.dit.viewpagerswipe;
+package com.example.dit.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.dit.com.example.dit.entities.DataObject;
+import com.example.dit.viewpagerswipe.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
