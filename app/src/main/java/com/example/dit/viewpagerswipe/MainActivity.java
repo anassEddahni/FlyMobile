@@ -10,8 +10,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.dit.adapter.CustomPageAdapter;
+import com.example.dit.com.example.dit.entities.Article;
+import com.example.dit.com.example.dit.entities.Attribut;
 import com.example.dit.com.example.dit.entities.Categories;
 import com.example.dit.com.example.dit.entities.DataObject;
+import com.example.dit.com.example.dit.entities.Produit;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
@@ -31,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     List<Categories> listCatChaise;
     List<Categories> listCatCanape;
     List<Categories> listCatTable;
+    List<Attribut> listAttrCanape;
+    List<Article> listArtCanape;
+
+    Produit myproduit;
     int positionItem = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,25 +101,45 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("le numero d'item","=========="+positionItem);
 
-        listCatCanape =new ArrayList<>();
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha","Fauteuil","à partir de : 439,90 $"));
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha","Canapé fixe","à partir de : 489,90 $"));
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha","Canapé d'angle fixe","à partir de : 1128,90 $"));
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha","Canapé convertible","à partir de : 829,90 $"));
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha","Canapé d'angle convertible","à partir de : 1738,90 $"));
+//REMPLIR LISTES PRODUITS
+        myproduit=new Produit("LINK","FAUTEUIL","439,90","dont 1,70 $ d'co part.","https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha" );
 
+//REMPLIR LISTES ATTRIBUTS
+        listAttrCanape = new ArrayList<>();
+        listAttrCanape.add(new Attribut("MATIERE",listArtCanape));
+        listAttrCanape.add(new Attribut("couleur",listArtCanape));
+        listAttrCanape.add(new Attribut("accoudoirs et pieds",listArtCanape));
+        listAttrCanape.add(new Attribut("confort",listArtCanape));
+
+
+//REMPLIR LISTE CATEGORIES
+
+        //liste CANAPE
+        listCatCanape =new ArrayList<>();
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha","Fauteuil","à partir de : 439,90 $",myproduit,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha","Canapé fixe","à partir de : 489,90 $",myproduit,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha","Canapé d'angle fixe","à partir de : 1128,90 $",myproduit,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha","Canapé convertible","à partir de : 829,90 $",myproduit,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha","Canapé d'angle convertible","à partir de : 1738,90 $",myproduit,listAttrCanape));
+       //liste CHAISE
         listCatChaise = new ArrayList<>();
         listCatChaise.add(new Categories("https://s7g8.scene7.com/is/image/FLY//chaisetabouret?fmt=png-alpha","Chaises  & tabourets","à partir de : 68,90 $"));
         listCatChaise.add(new Categories("https://s7g8.scene7.com/is/image/FLY//chaisehaute?fmt=png-alpha","Chaises hautes","à partir de : 68,90 $"));
         listCatChaise.add(new Categories("https://s7g8.scene7.com/is/image/FLY//tablebasse?fmt=png-alpha","Tables basses","à partir de : 74,90 $"));
         listCatChaise.add(new Categories("https://s7g8.scene7.com/is/image/FLY//tablerepas?fmt=png-alpha","Tables repas","à partir de : 248,90 $"));
-
-
+        //liste TABLE
         listCatTable = new ArrayList<>();
         listCatTable.add(new Categories("https://s7g8.scene7.com/is/image/FLY//1_50130_50138_1?fmt=png-alpha&wid=200","Ma Table VOLCANI","à partir de : 68,90 $"));
         listCatTable.add(new Categories("https://s7g8.scene7.com/is/image/FLY//1_50130_50141_1?fmt=png-alpha&wid=200","Ma Table VOLCANI","à partir de : 68,90 $"));
         listCatTable.add(new Categories("https://s7g8.scene7.com/is/image/FLY//1_50130_50143_1?fmt=png-alpha&wid=200","Ma Table VOLCANI","à partir de : 74,90 $"));
         listCatTable.add(new Categories("https://s7g8.scene7.com/is/image/FLY//1_50137_50138_1?fmt=png-alpha&wid=200","Ma Table VOLCANI","à partir de : 248,90 $"));
+
+
+
+//REMPLIR LISTE ARTICLE
+        listArtCanape = new ArrayList<>();
+        listArtCanape.add(new Article("https://s7g8.scene7.com/is/image/FLY//D?wid=101&hei=91","cuir"));
+        listArtCanape.add(new Article("https://s7g8.scene7.com/is/image/FLY//A?wid=101&hei=91","microfibre"));
     }
 
     public void choisirArticle(View view){
@@ -120,11 +147,19 @@ public class MainActivity extends AppCompatActivity {
         oneArticle=new DataObject();
         oneArticle=getData.get(positionItem);
         Intent myIntent = new Intent(this,ArticleActivity.class);
+        myIntent.putExtra("maClasseDataObject", (Serializable) oneArticle);
+        startActivity(myIntent);
+
+
+        /*List<DataObject> getData = dataSource();
+        oneArticle=new DataObject();
+        oneArticle=getData.get(positionItem);
+        Intent myIntent = new Intent(this,ArticleActivity.class);
         //myIntent.putExtra("maClasse", (Serializable) new Categories("https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha","Fauteuil","à partir de : 439,90 $"));
         //myIntent.putExtra("maClasseDataObject", (Serializable) new DataObject("https://s7g8.scene7.com/is/image/FLY//linkup?fmt=jpg&wid=781&hei=1068",myListPicCanape ,"MON CANAPé LINK",true,listCatCanape));
        // DataObject getData = new DataObject("https://s7g8.scene7.com/is/image/FLY//linkup?fmt=jpg&wid=781&hei=1068",myListPicCanape ,"MON CANAPé LINK",true,listCatCanape);
         myIntent.putExtra("maClasseDataObject", (Serializable) oneArticle);
-        startActivity(myIntent);
+        startActivity(myIntent);*/
 
     }
 

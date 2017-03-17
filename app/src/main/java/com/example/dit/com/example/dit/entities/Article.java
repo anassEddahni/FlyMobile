@@ -34,4 +34,12 @@ public class Article implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "imageUrl='" + imageUrl + '\'' +
+                ", nom='" + nom + '\'' +
+                '}';
+    }
 }

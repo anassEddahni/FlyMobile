@@ -35,4 +35,12 @@ public class Attribut implements Serializable {
     public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
+
+    @Override
+    public String toString() {
+        return "Attribut{" +
+                "nom='" + nom + '\'' +
+                ", articles=" + articles +
+                '}';
+    }
 }

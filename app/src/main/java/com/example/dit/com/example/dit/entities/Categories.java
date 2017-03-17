@@ -1,6 +1,7 @@
 package com.example.dit.com.example.dit.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by DIT on 15/03/2017.
@@ -11,7 +12,26 @@ public class Categories implements Serializable{
     private String name;
     private String montant;
     private Produit produit;
+    private List<Attribut> attributList;
 
+    public Categories(String photoUrl, String name, String montant, Produit produit, List<Attribut> attributList) {
+        this.photoUrl = photoUrl;
+        this.name = name;
+        this.montant = montant;
+        this.produit = produit;
+        this.attributList = attributList;
+    }
+
+    public Categories() {
+    }
+
+    public List<Attribut> getAttributList() {
+        return attributList;
+    }
+
+    public void setAttributList(List<Attribut> attributList) {
+        this.attributList = attributList;
+    }
 
 
 
@@ -62,12 +82,15 @@ public class Categories implements Serializable{
         this.montant = montant;
     }
 
+
     @Override
     public String toString() {
         return "Categories{" +
                 "photoUrl='" + photoUrl + '\'' +
                 ", name='" + name + '\'' +
                 ", montant='" + montant + '\'' +
+                ", produit=" + produit +
+                ", attributList=" + attributList +
                 '}';
     }
 }

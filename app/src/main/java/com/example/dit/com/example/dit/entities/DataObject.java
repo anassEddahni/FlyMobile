@@ -15,7 +15,7 @@ public class DataObject implements Serializable {
     private String imageBackgroundUrl;
     private String[] listImagePicUrl;
     private Boolean fabFUrl;
-    List<Categories> categories;
+    private List<Categories> categories;
 
     public DataObject(String imageBackgroundUrl, String[] listImagePicUrl,String nom, Boolean fabFUrl) {
         this.nom = nom;
@@ -24,12 +24,20 @@ public class DataObject implements Serializable {
         this.fabFUrl = fabFUrl;
     }
 
-    public DataObject(String imageBackgroundUrl, String[] listImagePicUrl,String nom, Boolean fabFUrl, List<Categories> categories) {
+    public DataObject(String imageBackgroundUrl, String[] listImagePicUrl,String nom, Boolean fabFUrl,List<Categories> categories) {
         this.nom = nom;
         this.imageBackgroundUrl = imageBackgroundUrl;
         this.listImagePicUrl = listImagePicUrl;
         this.fabFUrl = fabFUrl;
         this.categories = categories;
+    }
+
+    public List<Categories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categories> categoriesList) {
+        this.categories = categoriesList;
     }
 
     public DataObject() {
@@ -70,13 +78,7 @@ public class DataObject implements Serializable {
     }
 
 
-    public List<Categories> getCategories() {
-        return categories;
-    }
 
-    public void setCategories(List<Categories> categories) {
-        this.categories = categories;
-    }
 
     public String getCatElement(String[] listImagePicUrl, int index ){
         return listImagePicUrl[index];
@@ -86,6 +88,7 @@ public class DataObject implements Serializable {
         return listImagePicUrl[index];
     }
 
+
     @Override
     public String toString() {
         return "DataObject{" +
@@ -93,7 +96,7 @@ public class DataObject implements Serializable {
                 ", imageBackgroundUrl='" + imageBackgroundUrl + '\'' +
                 ", listImagePicUrl=" + Arrays.toString(listImagePicUrl) +
                 ", fabFUrl=" + fabFUrl +
-                ", categories=" + categories +
+                ", categoriesList=" + categories +
                 '}';
     }
 }

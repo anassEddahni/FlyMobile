@@ -10,6 +10,18 @@ public class Produit implements Serializable {
     private String nom;
     private String desc;
     private String prix;
+
+    @Override
+    public String toString() {
+        return "Produit{" +
+                "nom='" + nom + '\'' +
+                ", desc='" + desc + '\'' +
+                ", prix='" + prix + '\'' +
+                ", prixEco='" + prixEco + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
+
     private String prixEco;
     private String imageUrl;
 
