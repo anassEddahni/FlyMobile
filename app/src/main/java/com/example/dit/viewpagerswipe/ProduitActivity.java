@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dit.adapter.ExpandableListAdapter;
+import com.example.dit.com.example.dit.entities.Article;
 import com.example.dit.com.example.dit.entities.Categories;
 import com.example.dit.com.example.dit.entities.DataObject;
 import com.squareup.picasso.Picasso;
@@ -21,9 +23,9 @@ public class ProduitActivity extends AppCompatActivity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    HashMap<String, List<Article>> listDataChild;
     private Categories monObjetCat;
-    ImageView imageView;
+    TextView nomProduit ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,20 @@ public class ProduitActivity extends AppCompatActivity {
 
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        ImageView imageView = (ImageView) findViewById(R.id.photo_article);
-        //Picasso.with(this).load(monObjetCat.getPhotoUrl()).into(imageView);
+        ImageView imageArticle = (ImageView) findViewById(R.id.image_article);
+         nomProduit = (TextView) findViewById(R.id.nom_produit);
+        TextView description = (TextView) findViewById(R.id.description_produit);
+        TextView prixProduit = (TextView) findViewById(R.id.prix_produit);
+        TextView prixEcoProduit = (TextView) findViewById(R.id.prix_eco_produit);
+
+        nomProduit.setText(monObjetCat.getProduit().getNom());
+        Log.d("STRIIIIIING","================"+monObjetCat.getProduit().getNom());
+        description.setText(monObjetCat.getProduit().getDesc());
+        prixProduit.setText(monObjetCat.getProduit().getPrix());
+        prixEcoProduit.setText(monObjetCat.getProduit().getPrixEco());
+
+
+        Picasso.with(this).load(monObjetCat.getPhotoUrl()).into(imageArticle);
         // preparing list data
         prepareListData();
 
@@ -109,47 +123,43 @@ public class ProduitActivity extends AppCompatActivity {
 	 */
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataChild = new HashMap<String, List<Article>>();
 
         // Adding child data
         listDataHeader.add(monObjetCat.getAttributList().get(0).getNom());
-        listDataHeader.add("COULEUR");
-        listDataHeader.add("ACCOUDOIRS ET PIEDS");
+        listDataHeader.add(monObjetCat.getAttributList().get(1).getNom());
+        listDataHeader.add(monObjetCat.getAttributList().get(2).getNom());
+        listDataHeader.add(monObjetCat.getAttributList().get(3).getNom());
         //listDataHeader.add("CONFORT");
 
         // Adding child data
-        List<String> matiere = new ArrayList<String>();
-        matiere.add("Cuir");
-        matiere.add("microfibre");
-        matiere.add("tissu luxury");
-        /*matiere.add("Pulp Fiction");
-        matiere.add("The Good, the Bad and the Ugly");
-        matiere.add("The Dark Knight");
-        matiere.add("12 Angry Men");
-*/
-        List<String> couleur = new ArrayList<String>();
-        couleur.add("Noir");
-        couleur.add("Blanc");
-        /*nowShowing.add("Turbo");
-        nowShowing.add("Grown Ups 2");
-        nowShowing.add("Red 2");
-        nowShowing.add("The Wolverine");*/
+        List<Article> matiere = new ArrayList<>();
+        matiere.add(monObjetCat.getAttributList().get(0).getArticles().get(0));
+        matiere.add(monObjetCat.getAttributList().get(0).getArticles().get(1));
 
-        List<String> accoudoir = new ArrayList<String>();
-        accoudoir.add("acoudoirs et pieds eban alu brossé");
-        /*accoudoir.add("The Spectacular Now");
-        accoudoir.add("The Canyons");
-        accoudoir.add("Europa Report");*/
 
-        List<String> confort = new ArrayList<String>();
-        accoudoir.add("design");
+
+        List<Article> couleur = new ArrayList<>();
+        couleur.add(monObjetCat.getAttributList().get(1).getArticles().get(0));
+        couleur.add(monObjetCat.getAttributList().get(1).getArticles().get(1));
+
+
+        List<Article> accoudoir = new ArrayList<>();
+        accoudoir.add(monObjetCat.getAttributList().get(2).getArticles().get(0));
+        accoudoir.add(monObjetCat.getAttributList().get(2).getArticles().get(1));
+
+        List<Article> confort = new ArrayList<>();
+        confort.add(monObjetCat.getAttributList().get(3).getArticles().get(0));
+        confort.add(monObjetCat.getAttributList().get(3).getArticles().get(1));
 
 
         listDataChild.put(listDataHeader.get(0), matiere); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), couleur);
+
+
+       listDataChild.put(listDataHeader.get(1), couleur);
         listDataChild.put(listDataHeader.get(2), accoudoir);
-        //listDataChild.put(listDataHeader.get(3), confort);
-        //listDataChild.put(listDataHeader.get(2), comingSoon);
+        listDataChild.put(listDataHeader.get(3), confort);
+
     }
 
 }

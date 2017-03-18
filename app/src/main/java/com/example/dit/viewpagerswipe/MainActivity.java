@@ -35,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
     List<Categories> listCatCanape;
     List<Categories> listCatTable;
     List<Attribut> listAttrCanape;
-    List<Article> listArtCanape;
+    List<Article> listArtCanapeMatiere;
+    List<Article> listArtCanapeCouleur;
+    List<Article> listArtCanapeAccoudoirs;
+    List<Article> listArtCanapeConfort;
 
     Produit myproduit;
     int positionItem = 0;
@@ -104,12 +107,31 @@ public class MainActivity extends AppCompatActivity {
 //REMPLIR LISTES PRODUITS
         myproduit=new Produit("LINK","FAUTEUIL","439,90","dont 1,70 $ d'co part.","https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha" );
 
+//REMPLIR LISTE ARTICLE
+        //liste fauteuil matiere
+        listArtCanapeMatiere = new ArrayList<>();
+        listArtCanapeMatiere.add(new Article("https://s7g8.scene7.com/is/image/FLY//D?wid=101&hei=91","cuir"));
+        listArtCanapeMatiere.add(new Article("https://s7g8.scene7.com/is/image/FLY//A?wid=101&hei=91","microfibre"));
+        //liste fauteuil couleur
+        listArtCanapeCouleur = new ArrayList<>();
+        listArtCanapeCouleur.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725254?wid=101&hei=91","Chamois"));
+        listArtCanapeCouleur.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725256?wid=101&hei=91","Anthracite"));
+        //liste accoudoirs/pieds
+        listArtCanapeAccoudoirs = new ArrayList<>();
+        listArtCanapeAccoudoirs.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725492?wid=101&hei=91","Accoudoirs et pieds eban alu brossé "));
+        listArtCanapeAccoudoirs.add(new Article("https://s7g8.scene7.com/is/image/FLY//77735412?wid=101&hei=91","Accoudoirs et pieds matis wengé"));
+        //liste confort
+        listArtCanapeConfort = new ArrayList<>();
+        listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725590?wid=101&hei=91","Design "));
+        listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725591?wid=101&hei=91","Ferme"));
+
+
 //REMPLIR LISTES ATTRIBUTS
         listAttrCanape = new ArrayList<>();
-        listAttrCanape.add(new Attribut("MATIERE",listArtCanape));
-        listAttrCanape.add(new Attribut("couleur",listArtCanape));
-        listAttrCanape.add(new Attribut("accoudoirs et pieds",listArtCanape));
-        listAttrCanape.add(new Attribut("confort",listArtCanape));
+        listAttrCanape.add(new Attribut("MATIERE",listArtCanapeMatiere));
+        listAttrCanape.add(new Attribut("COULEUR",listArtCanapeCouleur));
+        listAttrCanape.add(new Attribut("ACCOUDOIRS ET PIEDS",listArtCanapeAccoudoirs));
+        listAttrCanape.add(new Attribut("CONFORT",listArtCanapeConfort));
 
 
 //REMPLIR LISTE CATEGORIES
@@ -136,10 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//REMPLIR LISTE ARTICLE
-        listArtCanape = new ArrayList<>();
-        listArtCanape.add(new Article("https://s7g8.scene7.com/is/image/FLY//D?wid=101&hei=91","cuir"));
-        listArtCanape.add(new Article("https://s7g8.scene7.com/is/image/FLY//A?wid=101&hei=91","microfibre"));
+
     }
 
     public void choisirArticle(View view){

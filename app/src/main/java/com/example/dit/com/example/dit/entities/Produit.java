@@ -11,16 +11,7 @@ public class Produit implements Serializable {
     private String desc;
     private String prix;
 
-    @Override
-    public String toString() {
-        return "Produit{" +
-                "nom='" + nom + '\'' +
-                ", desc='" + desc + '\'' +
-                ", prix='" + prix + '\'' +
-                ", prixEco='" + prixEco + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                '}';
-    }
+
 
     private String prixEco;
     private String imageUrl;
@@ -75,5 +66,16 @@ public class Produit implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Produit{" +
+                "nom='" + nom + '\'' +
+                ", desc='" + desc + '\'' +
+                ", prix='" + prix + '\'' +
+                ", prixEco='" + prixEco + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 }

@@ -6,22 +6,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dit.com.example.dit.entities.Article;
+import com.example.dit.com.example.dit.entities.DataObject;
 import com.example.dit.viewpagerswipe.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
-
+	private DataObject dataObject;
 	private Context _context;
 	private List<String> _listDataHeader; // header titles
 	// child data in format of header title, child title
-	private HashMap<String, List<String>> _listDataChild;
+	private HashMap<String, List<Article>> _listDataChild;
 
 	public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                                 HashMap<String, List<Article>> listChildData) {
 		this._context = context;
 		this._listDataHeader = listDataHeader;
 		this._listDataChild = listChildData;
@@ -42,7 +46,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-		final String childText = (String) getChild(groupPosition, childPosition);
+		final Article childAricle = (Article) getChild(groupPosition, childPosition);
 
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -50,8 +54,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		}
 
 		TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);
+		ImageView imageListChild = (ImageView) convertView.findViewById(R.id.image_child);
 
-		txtListChild.setText(childText);
+		Picasso.with(_context).load(childAricle.getImageUrl()).into(imageListChild);
+		txtListChild.setText(childAricle.getNom());
 		return convertView;
 	}
 
