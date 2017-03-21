@@ -12,17 +12,22 @@
         android:label="MyFly."
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ArticleActivity" />
-
-        <activity android:name=".ProduitActivity"></activity>
+        <activity android:name=".ArticleActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ProduitActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FullScreenActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

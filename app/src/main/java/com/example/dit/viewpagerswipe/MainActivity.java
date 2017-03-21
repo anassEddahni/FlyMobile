@@ -48,64 +48,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = (Button) findViewById(R.id.choisir);
-
         logoFly = (ImageView) findViewById(R.id.logo_fly);
+
         Picasso.with(this).load("https://s7g8.scene7.com/is/image/FLY//logo-myfly?fmt=png-alpha").into(logoFly);
-        myListPicCanape = new String[]{"https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=200", "https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha&wid=200", "https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha&wid=200", "https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha&wid=200", "https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha&wid=200"};
-        myListPicChaise = new String[]{"https://s7g8.scene7.com/is/image/FLY//chaisetabouret?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//chaisehaute?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//tablebasse?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//tablerepas?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//tablerepas?fmt=png-alpha&wid=200"};
+
+        myListPicCanape = new String[]{"https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=200&hei=200&scl=1.3", "https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha&wid=170", "https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha&wid=170", "https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha&wid=170", "https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha&wid=200"};
+        myListPicChaise = new String[]{"https://s7g8.scene7.com/is/image/FLY//chaisetabouret?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//chaisehaute?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//tablebasse?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//tablerepas?fmt=png-alpha&wid=200"};
         myListPicTable = new String[]{"https://s7g8.scene7.com/is/image/FLY//1_50130_50138_1?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//1_50130_50141_1?fmt=png-alpha&wid=200", "https://s7g8.scene7.com/is/image/FLY//1_50130_50143_1?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//1_50137_50138_1?fmt=png-alpha&wid=200"};
+
+        //recuperer les données
         List<DataObject> getData = dataSource();
 
         viewPager = (ViewPager)findViewById(R.id.viewpager);
-
+        //ViewPager Adapter
         CustomPageAdapter mCustomPagerAdapter = new CustomPageAdapter(MainActivity.this, getData);
         viewPager.setAdapter(mCustomPagerAdapter);
 
-       /* class OnPageChangeListener extends  ViewPager.SimpleOnPageChangeListener{
-            private int currentposition;
-            @Override
-            public void onPageSelected(int pos) {
-                int  currentposition =pos;
-                //Log.e("Current Postion", "" + pos);
-
-            }
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-            public final int getCurrentPage(){
-                return currentposition;
-            }
-        }*/
-
-
-       viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            //int currentposition;
+        //recuperer la position courante de viewPager
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageSelected(int pos) {
                   positionItem =pos;
                 Log.e("Current Postion", "" + positionItem);
-
             }
-
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
             public final int getCurrentPage(){
                 return positionItem;
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
             }});
 
-
         Log.d("le numero d'item","=========="+positionItem);
 
 //REMPLIR LISTES PRODUITS
-        myproduit=new Produit("LINK","FAUTEUIL","439,90","dont 1,70 $ d'co part.","https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha" );
+        myproduit=new Produit("LINK","FAUTEUIL","439,90 $","dont 1,70 $ d'co part.","https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=200&hei=200&scl=0.9" );
 
 //REMPLIR LISTE ARTICLE
         //liste fauteuil matiere
@@ -138,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         //liste CANAPE
         listCatCanape =new ArrayList<>();
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha","Fauteuil","à partir de : 439,90 $",myproduit,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=300&hei=300&scl=0.9","Fauteuil","à partir de : 439,90 $",myproduit,listAttrCanape));
         listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha","Canapé fixe","à partir de : 489,90 $",myproduit,listAttrCanape));
         listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha","Canapé d'angle fixe","à partir de : 1128,90 $",myproduit,listAttrCanape));
         listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha","Canapé convertible","à partir de : 829,90 $",myproduit,listAttrCanape));
@@ -156,9 +135,6 @@ public class MainActivity extends AppCompatActivity {
         listCatTable.add(new Categories("https://s7g8.scene7.com/is/image/FLY//1_50130_50143_1?fmt=png-alpha&wid=200","Ma Table VOLCANI","à partir de : 74,90 $"));
         listCatTable.add(new Categories("https://s7g8.scene7.com/is/image/FLY//1_50137_50138_1?fmt=png-alpha&wid=200","Ma Table VOLCANI","à partir de : 248,90 $"));
 
-
-
-
     }
 
     public void choisirArticle(View view){
@@ -168,24 +144,7 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this,ArticleActivity.class);
         myIntent.putExtra("maClasseDataObject", (Serializable) oneArticle);
         startActivity(myIntent);
-
-
-        /*List<DataObject> getData = dataSource();
-        oneArticle=new DataObject();
-        oneArticle=getData.get(positionItem);
-        Intent myIntent = new Intent(this,ArticleActivity.class);
-        //myIntent.putExtra("maClasse", (Serializable) new Categories("https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha","Fauteuil","à partir de : 439,90 $"));
-        //myIntent.putExtra("maClasseDataObject", (Serializable) new DataObject("https://s7g8.scene7.com/is/image/FLY//linkup?fmt=jpg&wid=781&hei=1068",myListPicCanape ,"MON CANAPé LINK",true,listCatCanape));
-       // DataObject getData = new DataObject("https://s7g8.scene7.com/is/image/FLY//linkup?fmt=jpg&wid=781&hei=1068",myListPicCanape ,"MON CANAPé LINK",true,listCatCanape);
-        myIntent.putExtra("maClasseDataObject", (Serializable) oneArticle);
-        startActivity(myIntent);*/
-
     }
-
-
-
-
-
 
     //RESSOURCES
     private List<DataObject> dataSource(){
@@ -194,12 +153,8 @@ public class MainActivity extends AppCompatActivity {
         data.add(new DataObject("https://s7g8.scene7.com/is/image/FLY//linkup?fmt=jpg&wid=781&hei=1068",myListPicCanape ,"MON CANAPé LINK",true,listCatCanape));
         //chaise
         data.add(new DataObject("https://s7g8.scene7.com/is/image/FLY//sixteen?fmt=jpg&wid=781&hei=1068",myListPicChaise ,"MON Prgramme SIXTEEN",false,listCatChaise));
-
         //table
         data.add(new DataObject("https://s7g8.scene7.com/is/image/FLY//volcani?fmt=jpg&wid=781&hei=1068",myListPicTable ,"Ma Table VOLCANI",false,listCatTable));
-
-
-  //      data.add(new DataObject("https://s7g8.scene7.com/is/image/FLY//linkup?fmt=jpg&wid=781&hei=1068", "https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha&wid=200", "https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha&wid=200", "\"https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//pictos-plus?fmt=png-alpha"));
         return data;
     }
 }

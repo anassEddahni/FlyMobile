@@ -1,13 +1,16 @@
 package com.example.dit.viewpagerswipe;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dit.adapter.ExpandableListAdapter;
 import com.example.dit.com.example.dit.entities.Article;
@@ -19,6 +22,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.dit.viewpagerswipe.ConvertBitmap.getBytes;
+
 public class ProduitActivity extends AppCompatActivity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
@@ -26,140 +31,133 @@ public class ProduitActivity extends AppCompatActivity {
     HashMap<String, List<Article>> listDataChild;
     private Categories monObjetCat;
     TextView nomProduit ;
-
+    ImageView imageArticle;
+    Bitmap bmp;
+    private int lastExpandedPosition = -1;
+    ImageView header;
+    private DataObject monProgramme;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produit);
 
+        //get categories object
         monObjetCat= (Categories) getIntent().getSerializableExtra("maClasseDataObject");
-        //String string = monObjet.getCategories().get(0).getAttributList().get(0).getNom();
         Log.d("mon noom","=============="+monObjetCat.toString());
 
-
-        // get the listview
+        // get listview
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        ImageView imageArticle = (ImageView) findViewById(R.id.image_article);
-         nomProduit = (TextView) findViewById(R.id.nom_produit);
+        imageArticle = (ImageView) findViewById(R.id.image_article);
+        nomProduit = (TextView) findViewById(R.id.nom_produit);
         TextView description = (TextView) findViewById(R.id.description_produit);
         TextView prixProduit = (TextView) findViewById(R.id.prix_produit);
         TextView prixEcoProduit = (TextView) findViewById(R.id.prix_eco_produit);
+        header = (ImageView) findViewById(R.id.image_header);
+        Picasso.with(this).load("http://media-cdn.fly.fr/media/rubriques/780-gauche-salons2016.jpg").resize(2200,550).into(header);
 
         nomProduit.setText(monObjetCat.getProduit().getNom());
         Log.d("STRIIIIIING","================"+monObjetCat.getProduit().getNom());
         description.setText(monObjetCat.getProduit().getDesc());
         prixProduit.setText(monObjetCat.getProduit().getPrix());
         prixEcoProduit.setText(monObjetCat.getProduit().getPrixEco());
+        Picasso.with(this).load(monObjetCat.getProduit().getImageUrl()).into(imageArticle);
+        //Picasso.with(this).load(monObjetCat.getProduit().getImageUrl()).into(imageArticle);
 
 
-        Picasso.with(this).load(monObjetCat.getPhotoUrl()).into(imageArticle);
         // preparing list data
         prepareListData();
-
+        //set data to expandable list
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
+        // setting adapter to the list
         expListView.setAdapter(listAdapter);
 
-        /*// Listview Group click listener
-        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-                // Toast.makeText(getApplicationContext(),
-                // "Group Clicked " + listDataHeader.get(groupPosition),
-                // Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-
-        // Listview Group expanded listener
+        //collapse non-selected Group
         expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        listDataHeader.get(groupPosition) + " Expanded",
-                        Toast.LENGTH_SHORT).show();
+                if (lastExpandedPosition != -1
+                        && groupPosition != lastExpandedPosition) {
+                    expListView.collapseGroup(lastExpandedPosition);
+                }
+                lastExpandedPosition = groupPosition;
+
             }
         });
 
-        // Listview Group collasped listener
-        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
+        //set parent in top when selected
+                /*expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        listDataHeader.get(groupPosition) + " Collapsed",
-                        Toast.LENGTH_SHORT).show();
-
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                expListView.setSelectionFromTop(groupPosition, 0);
+                Boolean shouldExpand = (!expListView.isGroupExpanded(groupPosition));
+                expListView.collapseGroup(lastClickedPosition);
+                if (shouldExpand){
+                    expListView.expandGroup(groupPosition);
+                }
+                lastClickedPosition = groupPosition;
+                return true;
             }
-        });
-
-        // Listview on child click listener
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                // TODO Auto-generated method stub
-                Toast.makeText(
-                        getApplicationContext(),
-                        listDataHeader.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
-                        .show();
-                return false;
-            }
-        });
-*/
+        });*/
     }
 
-    /*
-	 * Preparing the list data
-	 */
+   //Préparation des données article
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<Article>>();
+        List<Article> matiere = new ArrayList<>();
 
-        // Adding child data
-        listDataHeader.add(monObjetCat.getAttributList().get(0).getNom());
+        /*listDataHeader.add(monObjetCat.getAttributList().get(0).getNom());
         listDataHeader.add(monObjetCat.getAttributList().get(1).getNom());
         listDataHeader.add(monObjetCat.getAttributList().get(2).getNom());
-        listDataHeader.add(monObjetCat.getAttributList().get(3).getNom());
-        //listDataHeader.add("CONFORT");
+        listDataHeader.add(monObjetCat.getAttributList().get(3).getNom());*/
+        for(int i = 0 ; i<monObjetCat.getAttributList().size();i++){
+            listDataHeader.add(monObjetCat.getAttributList().get(i).getNom());
+        }
 
-        // Adding child data
-        List<Article> matiere = new ArrayList<>();
-        matiere.add(monObjetCat.getAttributList().get(0).getArticles().get(0));
-        matiere.add(monObjetCat.getAttributList().get(0).getArticles().get(1));
-
-
-
-        List<Article> couleur = new ArrayList<>();
-        couleur.add(monObjetCat.getAttributList().get(1).getArticles().get(0));
-        couleur.add(monObjetCat.getAttributList().get(1).getArticles().get(1));
+       /* for(int i = 0 ; i<monObjetCat.getAttributList().size();i++){
+            for(int j = 0 ; j < monObjetCat.getAttributList().get(i).getArticles().size();j++){
+                matiere.add(monObjetCat.getAttributList().get(i).getArticles().get(j));
+            }
+        }*/
 
 
-        List<Article> accoudoir = new ArrayList<>();
-        accoudoir.add(monObjetCat.getAttributList().get(2).getArticles().get(0));
-        accoudoir.add(monObjetCat.getAttributList().get(2).getArticles().get(1));
+        //ajouter les données aux fils
+            //matuere
+            matiere.add(monObjetCat.getAttributList().get(0).getArticles().get(0));
+            matiere.add(monObjetCat.getAttributList().get(0).getArticles().get(1));
 
-        List<Article> confort = new ArrayList<>();
-        confort.add(monObjetCat.getAttributList().get(3).getArticles().get(0));
-        confort.add(monObjetCat.getAttributList().get(3).getArticles().get(1));
+            //couleur
+            List<Article> couleur = new ArrayList<>();
+            couleur.add(monObjetCat.getAttributList().get(1).getArticles().get(0));
+            couleur.add(monObjetCat.getAttributList().get(1).getArticles().get(1));
 
+            //accoudoir
+            List<Article> accoudoir = new ArrayList<>();
+            accoudoir.add(monObjetCat.getAttributList().get(2).getArticles().get(0));
+            accoudoir.add(monObjetCat.getAttributList().get(2).getArticles().get(1));
 
+            //confort
+            List<Article> confort = new ArrayList<>();
+            confort.add(monObjetCat.getAttributList().get(3).getArticles().get(0));
+            confort.add(monObjetCat.getAttributList().get(3).getArticles().get(1));
+
+        //attribuer les données de fils à leurs headers
         listDataChild.put(listDataHeader.get(0), matiere); // Header, Child data
-
-
-       listDataChild.put(listDataHeader.get(1), couleur);
+        listDataChild.put(listDataHeader.get(1), couleur);
         listDataChild.put(listDataHeader.get(2), accoudoir);
         listDataChild.put(listDataHeader.get(3), confort);
 
     }
 
+
+    public void showFullScreen (View view){
+        Intent intent = new Intent(this,FullScreenActivity.class);
+        imageArticle.buildDrawingCache();
+        bmp = imageArticle.getDrawingCache();
+        byte [] mybyte ;
+        mybyte =getBytes(bmp);
+        intent.putExtra("Bitmap",mybyte);
+        startActivity(intent);
+    }
 }

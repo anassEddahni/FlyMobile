@@ -36,41 +36,47 @@
                 android:textAlignment="center" />
 
             <LinearLayout
-                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/layout_pictures"
                 android:layout_width="290dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/image1"
-                    android:layout_width="0px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:layout_gravity="center"/>
 
                 <ImageView
                     android:id="@+id/image2"
-                    android:layout_width="0px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:layout_gravity="center"/>
 
                 <ImageView
                     android:id="@+id/image3"
-                    android:layout_width="0px"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/image4"
-                    android:layout_width="0px"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/image5"
-                    android:layout_width="0px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginRight="5dp"/>
             </LinearLayout>
 
             <LinearLayout
