@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.dit.com.example.dit.entities.DataObject;
+import com.example.dit.com.example.dit.entities.Programme;
 import com.example.dit.viewpagerswipe.R;
 import com.squareup.picasso.Picasso;
 
@@ -22,21 +22,20 @@ import com.squareup.picasso.Picasso;
 
 public class CustomArticleAdapter extends PagerAdapter {
     private Context context;
-    private DataObject dataObject;
+    private Programme programme;
     private LayoutInflater layoutInflater;
 
     //constructeur
-    public CustomArticleAdapter(Context context, DataObject dataObject) {
+    public CustomArticleAdapter(Context context, Programme programme) {
 
         this.context = context;
         this.layoutInflater = (LayoutInflater) this.context.getSystemService(this.context.LAYOUT_INFLATER_SERVICE);
-        this.dataObject = dataObject;
+        this.programme = programme;
     }
-
 
     @Override
     public int getCount() {
-        return dataObject.getCategories().size();
+        return programme.getCategories().size();
     }
 
     @Override
@@ -54,22 +53,11 @@ public class CustomArticleAdapter extends PagerAdapter {
         photoArticle.startAnimation(zoomAnimation);
 
         TextView montantArticle = (TextView) view.findViewById(R.id.montant_article);
-        Log.d("catgories : ======"+position ,"  "+this.dataObject.toString());
-        Log.d("catgories : ======","  =============================================");
-        Picasso.with(context).load(this.dataObject.getCategories().get(position).getPhotoUrl()).into(photoArticle);
-        nomArticle.setText(this.dataObject.getCategories().get(position).getName());
-        montantArticle.setText(this.dataObject.getCategories().get(position).getMontant());
+        Log.d("catgories : ======"+position ,"  "+this.programme.toString());
 
-      //  Picasso.with(context).load(this.dataObjectList.get(position).getCategories().get(1).getPhotoUrl()).into(photoArticle);
-
-        /*for(int j=0;j<this.dataObjectList.get(position).getCategories().size();j++) {
-            Picasso.with(context).load(this.dataObjectList.get(position).getCategories().get(j).getPhotoUrl()).into(photoArticle);
-        }*/
-
-
-
-
-
+        Picasso.with(context).load(this.programme.getCategories().get(position).getPhotoUrl()).into(photoArticle);
+        nomArticle.setText(this.programme.getCategories().get(position).getName());
+        montantArticle.setText(this.programme.getCategories().get(position).getMontant());
 
         container.addView(view);
         return view;

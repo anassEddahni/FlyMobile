@@ -10,21 +10,21 @@ import java.util.List;
  * Created by DIT on 14/03/2017.
  */
 
-public class DataObject implements Serializable {
+public class Programme implements Serializable {
     private String nom ;
     private String imageBackgroundUrl;
     private String[] listImagePicUrl;
     private Boolean fabFUrl;
     private List<Categories> categories;
 
-    public DataObject(String imageBackgroundUrl, String[] listImagePicUrl,String nom, Boolean fabFUrl) {
+    public Programme(String imageBackgroundUrl, String[] listImagePicUrl, String nom, Boolean fabFUrl) {
         this.nom = nom;
         this.imageBackgroundUrl = imageBackgroundUrl;
         this.listImagePicUrl = listImagePicUrl;
         this.fabFUrl = fabFUrl;
     }
 
-    public DataObject(String imageBackgroundUrl, String[] listImagePicUrl,String nom, Boolean fabFUrl,List<Categories> categories) {
+    public Programme(String imageBackgroundUrl, String[] listImagePicUrl, String nom, Boolean fabFUrl, List<Categories> categories) {
         this.nom = nom;
         this.imageBackgroundUrl = imageBackgroundUrl;
         this.listImagePicUrl = listImagePicUrl;
@@ -40,7 +40,7 @@ public class DataObject implements Serializable {
         this.categories = categoriesList;
     }
 
-    public DataObject() {
+    public Programme() {
 
     }
 
@@ -91,7 +91,7 @@ public class DataObject implements Serializable {
 
     @Override
     public String toString() {
-        return "DataObject{" +
+        return "Programme{" +
                 "nom='" + nom + '\'' +
                 ", imageBackgroundUrl='" + imageBackgroundUrl + '\'' +
                 ", listImagePicUrl=" + Arrays.toString(listImagePicUrl) +

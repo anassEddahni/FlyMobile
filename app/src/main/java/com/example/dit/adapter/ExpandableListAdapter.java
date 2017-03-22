@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dit.com.example.dit.entities.Article;
-import com.example.dit.com.example.dit.entities.DataObject;
+import com.example.dit.com.example.dit.entities.Programme;
 import com.example.dit.viewpagerswipe.R;
 import com.squareup.picasso.Picasso;
 
@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
-	private DataObject dataObject;
+	private Programme programme;
 	private Context _context;
 	private List<String> _listDataHeader; // header titles
 	// child data in format of header title, child title
@@ -92,8 +92,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			convertView = infalInflater.inflate(R.layout.list_group, null);
 		}
 
-		TextView lblListHeader = (TextView) convertView
-				.findViewById(R.id.lblListHeader);
+		TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
 		lblListHeader.setTypeface(null, Typeface.BOLD);
 		lblListHeader.setText(headerTitle);
 

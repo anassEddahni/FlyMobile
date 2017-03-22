@@ -2,11 +2,8 @@ package com.example.dit.viewpagerswipe;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -15,7 +12,6 @@ import android.widget.TextView;
 import com.example.dit.adapter.ExpandableListAdapter;
 import com.example.dit.com.example.dit.entities.Article;
 import com.example.dit.com.example.dit.entities.Categories;
-import com.example.dit.com.example.dit.entities.DataObject;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -31,39 +27,33 @@ public class ProduitActivity extends AppCompatActivity {
     HashMap<String, List<Article>> listDataChild;
     private Categories monObjetCat;
     TextView nomProduit ;
-    ImageView imageArticle;
+    ImageView imageProduit;
     Bitmap bmp;
     private int lastExpandedPosition = -1;
     ImageView header;
-    private DataObject monProgramme;
-    ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produit);
 
-        //get categories object
-        monObjetCat= (Categories) getIntent().getSerializableExtra("maClasseDataObject");
-        Log.d("mon noom","=============="+monObjetCat.toString());
-
-        // get listview
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        imageArticle = (ImageView) findViewById(R.id.image_article);
+        imageProduit = (ImageView) findViewById(R.id.image_article);
         nomProduit = (TextView) findViewById(R.id.nom_produit);
         TextView description = (TextView) findViewById(R.id.description_produit);
         TextView prixProduit = (TextView) findViewById(R.id.prix_produit);
         TextView prixEcoProduit = (TextView) findViewById(R.id.prix_eco_produit);
         header = (ImageView) findViewById(R.id.image_header);
-        Picasso.with(this).load("http://media-cdn.fly.fr/media/rubriques/780-gauche-salons2016.jpg").resize(2200,550).into(header);
 
+        //get categories object
+        monObjetCat= (Categories) getIntent().getSerializableExtra("maClasseCategories");
+        Picasso.with(this).load("http://media-cdn.fly.fr/media/rubriques/780-gauche-salons2016.jpg").resize(3100,600).into(header);
         nomProduit.setText(monObjetCat.getProduit().getNom());
-        Log.d("STRIIIIIING","================"+monObjetCat.getProduit().getNom());
         description.setText(monObjetCat.getProduit().getDesc());
         prixProduit.setText(monObjetCat.getProduit().getPrix());
         prixEcoProduit.setText(monObjetCat.getProduit().getPrixEco());
-        Picasso.with(this).load(monObjetCat.getProduit().getImageUrl()).into(imageArticle);
-        //Picasso.with(this).load(monObjetCat.getProduit().getImageUrl()).into(imageArticle);
-
+        //Picasso.with(this).load(monObjetCat.getPhotoUrl()).into(imageArticle);
+        Picasso.with(this).load(monObjetCat.getProduit().getImageUrl()).into(imageProduit);
 
         // preparing list data
         prepareListData();
@@ -71,7 +61,6 @@ public class ProduitActivity extends AppCompatActivity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
         // setting adapter to the list
         expListView.setAdapter(listAdapter);
-
         //collapse non-selected Group
         expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
@@ -81,24 +70,9 @@ public class ProduitActivity extends AppCompatActivity {
                     expListView.collapseGroup(lastExpandedPosition);
                 }
                 lastExpandedPosition = groupPosition;
-
             }
         });
 
-        //set parent in top when selected
-                /*expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                expListView.setSelectionFromTop(groupPosition, 0);
-                Boolean shouldExpand = (!expListView.isGroupExpanded(groupPosition));
-                expListView.collapseGroup(lastClickedPosition);
-                if (shouldExpand){
-                    expListView.expandGroup(groupPosition);
-                }
-                lastClickedPosition = groupPosition;
-                return true;
-            }
-        });*/
     }
 
    //Préparation des données article
@@ -107,10 +81,6 @@ public class ProduitActivity extends AppCompatActivity {
         listDataChild = new HashMap<String, List<Article>>();
         List<Article> matiere = new ArrayList<>();
 
-        /*listDataHeader.add(monObjetCat.getAttributList().get(0).getNom());
-        listDataHeader.add(monObjetCat.getAttributList().get(1).getNom());
-        listDataHeader.add(monObjetCat.getAttributList().get(2).getNom());
-        listDataHeader.add(monObjetCat.getAttributList().get(3).getNom());*/
         for(int i = 0 ; i<monObjetCat.getAttributList().size();i++){
             listDataHeader.add(monObjetCat.getAttributList().get(i).getNom());
         }
@@ -153,8 +123,8 @@ public class ProduitActivity extends AppCompatActivity {
 
     public void showFullScreen (View view){
         Intent intent = new Intent(this,FullScreenActivity.class);
-        imageArticle.buildDrawingCache();
-        bmp = imageArticle.getDrawingCache();
+        imageProduit.buildDrawingCache();
+        bmp = imageProduit.getDrawingCache();
         byte [] mybyte ;
         mybyte =getBytes(bmp);
         intent.putExtra("Bitmap",mybyte);
