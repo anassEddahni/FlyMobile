@@ -142,7 +142,7 @@ public class ProduitActivity extends AppCompatActivity {
     //Load navigation menu header information like background image, profile image name, website, notifications action view (dot)
     private void loadNavHeader() {
         // name, website
-        txtName.setText("Myfly");
+        //txtName.setText("Myfly");
         txtWebsite.setText("www.fly.fr");
         // loading header background image
         Glide.with(this).load(urlNavHeaderBg).crossFade().diskCacheStrategy(DiskCacheStrategy.ALL).into(imgNavHeaderBg);
