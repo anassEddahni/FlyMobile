@@ -22,20 +22,18 @@ public class CategoriesActivity extends AppCompatActivity {
     private Categories oneCategorie;
     private Programme monProgramme;
     private ViewPager viewPagerArticle;
+    private Programme oneProgramme;
     private List<Categories> listCategories ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article);
-
         viewPagerArticle = (ViewPager) findViewById(R.id.viewpager_article);
         ImageView logoFly = (ImageView) findViewById(R.id.logo_fly);
         monProgramme = (Programme) getIntent().getSerializableExtra("maClasseProgramme");
         Picasso.with(this).load("https://s7g8.scene7.com/is/image/FLY//logo-myfly?fmt=png-alpha").into(logoFly);
-
         CustomArticleAdapter mCustomArticleAdapter = new CustomArticleAdapter(CategoriesActivity.this, monProgramme);
         viewPagerArticle.setAdapter(mCustomArticleAdapter);
-
         viewPagerArticle.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageSelected(int pos) {
@@ -55,10 +53,13 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     public void choisirCategorie(View view){
+        int itemPosition = positionItem;
         oneCategorie=new Categories();
         oneCategorie = monProgramme.getCategories().get(positionItem);
         Intent myIntent = new Intent(this,ProduitActivity.class);
+        myIntent.putExtra("itemPosition",itemPosition);
         myIntent.putExtra("maClasseCategories", (Serializable) oneCategorie);
+        myIntent.putExtra("maClasseProgramme", (Serializable) monProgramme);
         startActivity(myIntent);
     }
 }
