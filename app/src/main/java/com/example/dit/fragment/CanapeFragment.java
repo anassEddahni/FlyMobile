@@ -116,11 +116,11 @@ public class CanapeFragment extends Fragment {
         // preparing list data
         prepareListData();
         //set data to expandable list
-        listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
+        //listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
         // setting adapter to the list
-        expListView.setAdapter(listAdapter);
+        //expListView.setAdapter(listAdapter);
         //collapse non-selected Group
-        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+       /* expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
                 if (lastExpandedPosition != -1
@@ -129,7 +129,7 @@ public class CanapeFragment extends Fragment {
                 }
                 lastExpandedPosition = groupPosition;
             }
-        });
+        });*/
 
         return view;
     }

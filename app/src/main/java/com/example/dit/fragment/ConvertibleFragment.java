@@ -93,7 +93,7 @@ public class ConvertibleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home, container, false);
-        expListView = (ExpandableListView)view.findViewById(R.id.lvExp);
+        //expListView = (ExpandableListView)view.findViewById(R.id.lvExp);
         imageProduit = (ImageView) view.findViewById(R.id.image_article);
         nomProduit = (TextView) view.findViewById(R.id.nom_produit);
         description = (TextView) view.findViewById(R.id.description_produit);
@@ -117,6 +117,7 @@ public class ConvertibleFragment extends Fragment {
         prixProduit.setText(monObjetProg.getCategories().get(3).getProduit().getPrix());
         prixEcoProduit.setText(monObjetProg.getCategories().get(3).getProduit().getPrixEco());
         Picasso.with(getActivity()).load(monObjetProg.getCategories().get(3).getProduit().getImageUrl()).into(imageProduit);
+        /*
         // preparing list data
         prepareListData();
         //set data to expandable list
@@ -134,7 +135,7 @@ public class ConvertibleFragment extends Fragment {
                 lastExpandedPosition = groupPosition;
             }
         });
-
+*/
         return view;
     }
 

@@ -1,4 +1,7 @@
 <resources>
+
+
+
     <string name="app_name">ViewPagerSwipe</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -36,4 +39,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <string name="content">Put all your designs here</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hide">Hide Sliding Up Layout</string>
+    <string name="show">Show Sliding Up Layout</string>
+    <string name="slide">This is a simple Sliding Up Layout</string>
 </resources>

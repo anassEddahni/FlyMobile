@@ -49,7 +49,6 @@ public class Categories implements Serializable{
         this.produit = produit;
     }
 
-
     public Produit getProduit() {
         return produit;
     }

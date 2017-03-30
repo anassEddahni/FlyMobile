@@ -22,8 +22,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.dit.adapter.ExpandableListAdapter;
 import com.example.dit.com.example.dit.entities.Article;
 import com.example.dit.com.example.dit.entities.Categories;
@@ -112,7 +110,7 @@ public class ProduitActivity extends AppCompatActivity {
         angleFixeItem.setIcon(R.drawable.canape_angle_fixe);
         convertibleItem.setIcon(R.drawable.convertible);
         angleConvertibleItem.setIcon(R.drawable.angle_convertible);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab = (FloatingActionButton) findViewById(R.id.fab);
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
         txtName = (TextView) navHeader.findViewById(R.id.name);
@@ -122,6 +120,7 @@ public class ProduitActivity extends AppCompatActivity {
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
         //floatActionButton listener
+/*
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +128,7 @@ public class ProduitActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+*/
         // load nav menu header data
         loadNavHeader();
         // initializing navigation menu
@@ -145,9 +145,10 @@ public class ProduitActivity extends AppCompatActivity {
         //txtName.setText("Myfly");
         txtWebsite.setText("www.fly.fr");
         // loading header background image
-        Glide.with(this).load(urlNavHeaderBg).crossFade().diskCacheStrategy(DiskCacheStrategy.ALL).into(imgNavHeaderBg);
+        Picasso.with(this).load(urlNavHeaderBg).into(imgNavHeaderBg);
         // Loading profile image
-        Glide.with(this).load(urlProfileImg).crossFade().thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgProfile);
+        //Glide.with(this).load(urlProfileImg).crossFade().thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgProfile);
+        Picasso.with(this).load(urlProfileImg).into(imgProfile);
     }
 
     // Returns respected fragment that users elected from navigation menu

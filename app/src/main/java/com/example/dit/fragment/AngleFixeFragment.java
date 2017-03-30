@@ -94,7 +94,7 @@ public class AngleFixeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_home, container, false);
-        expListView = (ExpandableListView)view.findViewById(R.id.lvExp);
+        //expListView = (ExpandableListView)view.findViewById(R.id.lvExp);
         imageProduit = (ImageView) view.findViewById(R.id.image_article);
         nomProduit = (TextView) view.findViewById(R.id.nom_produit);
         description = (TextView) view.findViewById(R.id.description_produit);
@@ -111,9 +111,8 @@ public class AngleFixeFragment extends Fragment {
         description.setText(monObjetProg.getCategories().get(2).getProduit().getDesc());
         prixProduit.setText(monObjetProg.getCategories().get(2).getProduit().getPrix());
         prixEcoProduit.setText(monObjetProg.getCategories().get(2).getProduit().getPrixEco());
-        //Picasso.with(this).load(monObjetCat.getPhotoUrl()).into(imageArticle);
         Picasso.with(getActivity()).load(monObjetProg.getCategories().get(2).getProduit().getImageUrl()).into(imageProduit);
-
+/*
         // preparing list data
         prepareListData();
         //set data to expandable list
@@ -130,7 +129,7 @@ public class AngleFixeFragment extends Fragment {
                 }
                 lastExpandedPosition = groupPosition;
             }
-        });
+        });*/
 
         return view;
     }

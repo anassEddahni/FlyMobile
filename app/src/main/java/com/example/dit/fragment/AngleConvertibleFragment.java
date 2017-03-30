@@ -94,7 +94,7 @@ public class AngleConvertibleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_home, container, false);
-        expListView = (ExpandableListView)view.findViewById(R.id.lvExp);
+        //expListView = (ExpandableListView)view.findViewById(R.id.lvExp);
         imageProduit = (ImageView) view.findViewById(R.id.image_article);
         nomProduit = (TextView) view.findViewById(R.id.nom_produit);
         description = (TextView) view.findViewById(R.id.description_produit);
@@ -115,7 +115,7 @@ public class AngleConvertibleFragment extends Fragment {
         Picasso.with(getActivity()).load(monObjetProg.getCategories().get(4).getProduit().getImageUrl()).into(imageProduit);
 
         // preparing list data
-        prepareListData();
+        /*prepareListData();
         //set data to expandable list
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
         // setting adapter to the list
@@ -131,7 +131,7 @@ public class AngleConvertibleFragment extends Fragment {
                 lastExpandedPosition = groupPosition;
             }
         });
-
+*/
         return view;
     }
 

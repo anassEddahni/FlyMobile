@@ -21,7 +21,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
 
     Programme oneArticle;
@@ -89,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
 //REMPLIR LISTES PRODUITS
         myproduit1=new Produit("LINK","FAUTEUIL","439,90 $","dont 1,70 $ d'co part.","https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=200&hei=200&scl=0.9" );
-        myproduit2=new Produit("LINK","Canapé fixe","489,90 € ","dont 4,50 € d'éco part.","https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha" );
-        myproduit3=new Produit("LINK","Canapé d'angle fixe","1 128,90 € ","dont 9,00 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha" );
-        myproduit4=new Produit("LINK","Canapé convertible","829,90 €","dont 5,50 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha" );
-        myproduit5=new Produit("LINK","Canapé d'angle ","1 738,90 € ","dont 10,00 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha" );
+        myproduit2=new Produit("LINK","Canapé fixe","489,90 € ","dont 4,50 € d'éco part.","https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha&wid=300&hei=300&scl=0.9" );
+        myproduit3=new Produit("LINK","Canapé d'angle fixe","1 128,90 € ","dont 9,00 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha&wid=500&hei=400&scl=0.8" );
+        myproduit4=new Produit("LINK","Canapé convertible","829,90 €","dont 5,50 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha&wid=400&hei=200&scl=0.9" );
+        myproduit5=new Produit("LINK","Canapé d'angle ","1 738,90 € ","dont 10,00 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha&wid=450&hei=200&scl=0.9" );
 
 //REMPLIR LISTE ARTICLE
         //liste fauteuil matiere
@@ -126,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
         //liste CANAPE
         listCatCanape =new ArrayList<>();
         listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=300&hei=300&scl=0.9","Fauteuil","à partir de : 439,90 $",myproduit1,listAttrCanape));
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha","Canapé fixe","à partir de : 489,90 $",myproduit2,listAttrCanape));
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha","Canapé d'angle fixe","à partir de : 1128,90 $",myproduit3,listAttrCanape));
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha","Canapé convertible","à partir de : 829,90 $",myproduit4,listAttrCanape));
-        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha","Canapé d'angle convertible","à partir de : 1738,90 $",myproduit5,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha&wid=300&hei=300&scl=0.9","Canapé fixe","à partir de : 489,90 $",myproduit2,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha&wid=500&hei=300&scl=0.9","Canapé d'angle fixe","à partir de : 1128,90 $",myproduit3,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha&wid=400&hei=200&scl=0.9","Canapé convertible","à partir de : 829,90 $",myproduit4,listAttrCanape));
+        listCatCanape.add(new Categories("https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha&wid=450&hei=200&scl=0.9","Canapé d'angle convertible","à partir de : 1738,90 $",myproduit5,listAttrCanape));
        //liste CHAISE
         listCatChaise = new ArrayList<>();
         listCatChaise.add(new Categories("https://s7g8.scene7.com/is/image/FLY//chaisetabouret?fmt=png-alpha","Chaises  & tabourets","à partir de : 68,90 $"));
