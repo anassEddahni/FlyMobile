@@ -71,6 +71,7 @@ public class CustomPageAdapter extends PagerAdapter {
         container.removeView((View) object);
     }
 
+
 }
 
 

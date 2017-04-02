@@ -54,9 +54,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		}
 
 		TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);
-		ImageView imageListChild = (ImageView) convertView.findViewById(R.id.image_child);
+		//ImageView imageListChild = (ImageView) convertView.findViewById(R.id.image_child);
 
-		Picasso.with(_context).load(childAricle.getImageUrl()).into(imageListChild);
+		//Picasso.with(_context).load(childAricle.getImageUrl()).into(imageListChild);
 		txtListChild.setText(childAricle.getNom());
 		return convertView;
 	}
@@ -91,11 +91,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = infalInflater.inflate(R.layout.list_group, null);
 		}
-
-		TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
+		/*TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
 		lblListHeader.setTypeface(null, Typeface.BOLD);
-		lblListHeader.setText(headerTitle);
-
+		lblListHeader.setText(headerTitle);*/
 		return convertView;
 	}
 

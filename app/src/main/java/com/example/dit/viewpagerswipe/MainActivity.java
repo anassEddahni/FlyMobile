@@ -153,6 +153,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
+    public void choisirArticleswipe(View view){
+        List<Programme> getData = dataSource();
+        oneArticle=new Programme();
+        oneArticle=getData.get(positionItem);
+        Intent myIntent = new Intent(this,CategoriesActivity.class);
+        myIntent.putExtra("maClasseProgramme", (Serializable) oneArticle);
+        startActivity(myIntent);
+    }
+
     //RESSOURCES
     private List<Programme> dataSource(){
         List<Programme> data = new ArrayList<Programme>();

@@ -1,5 +1,6 @@
 package com.example.dit.viewpagerswipe;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -114,7 +115,6 @@ public class ProduitActivity extends AppCompatActivity {
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
         txtName = (TextView) navHeader.findViewById(R.id.name);
-        txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
         // load toolbar titles from string resources
@@ -143,7 +143,6 @@ public class ProduitActivity extends AppCompatActivity {
     private void loadNavHeader() {
         // name, website
         //txtName.setText("Myfly");
-        txtWebsite.setText("www.fly.fr");
         // loading header background image
         Picasso.with(this).load(urlNavHeaderBg).into(imgNavHeaderBg);
         // Loading profile image
@@ -357,6 +356,11 @@ public class ProduitActivity extends AppCompatActivity {
             }
         }*/
         super.onBackPressed();
+    }
+    public void showFullScreen(View view){
+        Intent myIntent = new Intent(this,FullScreenActivity.class);
+        myIntent.putExtra("urlPhotoProduit",monObjetCat.getProduit().getImageUrl());
+        startActivity(myIntent);
     }
 
 }
