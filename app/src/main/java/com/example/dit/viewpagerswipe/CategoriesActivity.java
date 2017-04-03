@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 import java.io.Serializable;
 import java.util.List;
 
+import me.relex.circleindicator.CircleIndicator;
+
 public class CategoriesActivity extends AppCompatActivity {
 
     private int positionItem = 0;
@@ -34,6 +36,10 @@ public class CategoriesActivity extends AppCompatActivity {
         Picasso.with(this).load("https://s7g8.scene7.com/is/image/FLY//logo-myfly?fmt=png-alpha").into(logoFly);
         CustomArticleAdapter mCustomArticleAdapter = new CustomArticleAdapter(CategoriesActivity.this, monProgramme);
         viewPagerArticle.setAdapter(mCustomArticleAdapter);
+// SET indicator for view pager
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(viewPagerArticle);
+
         viewPagerArticle.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageSelected(int pos) {

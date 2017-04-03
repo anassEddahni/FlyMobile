@@ -21,18 +21,11 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_weight="0.01"
-            android:background="@color/colorGrisFly"
             android:textAlignment="center"
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             android:textSize="17dip"
             android:text="matiere"/>
-
-        <!--<ImageView
-            android:id="@+id/image_child"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="1.06" />-->
     </LinearLayout>
 </LinearLayout>
+    <!--android:background="@color/colorGrisFly"-->

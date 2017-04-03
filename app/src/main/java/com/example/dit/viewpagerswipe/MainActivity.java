@@ -16,10 +16,13 @@ import com.example.dit.com.example.dit.entities.Categories;
 import com.example.dit.com.example.dit.entities.Produit;
 import com.example.dit.com.example.dit.entities.Programme;
 import com.squareup.picasso.Picasso;
+import com.viewpagerindicator.TitlePageIndicator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,14 +64,18 @@ public class MainActivity extends AppCompatActivity {
 
         //recuperer les données
         List<Programme> getData = dataSource();
-
         viewPager = (ViewPager)findViewById(R.id.viewpager);
         //ViewPager Adapter
         CustomPageAdapter mCustomPagerAdapter = new CustomPageAdapter(MainActivity.this, getData);
         viewPager.setAdapter(mCustomPagerAdapter);
+        // SET indicator for view pager
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(viewPager);
+
 
         //recuperer la position courante de viewPager
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
             @Override
             public void onPageSelected(int pos) {
                   positionItem =pos;
@@ -87,11 +94,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d("le numero d'item","=========="+positionItem);
 
 //REMPLIR LISTES PRODUITS
-        myproduit1=new Produit("LINK","FAUTEUIL","439,90 $","dont 1,70 $ d'co part.","https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=200&hei=200&scl=0.9" );
-        myproduit2=new Produit("LINK","Canapé fixe","489,90 € ","dont 4,50 € d'éco part.","https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha&wid=300&hei=300&scl=0.9" );
-        myproduit3=new Produit("LINK","Canapé d'angle fixe","1 128,90 € ","dont 9,00 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha&wid=500&hei=400&scl=0.8" );
-        myproduit4=new Produit("LINK","Canapé convertible","829,90 €","dont 5,50 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha&wid=400&hei=200&scl=0.9" );
-        myproduit5=new Produit("LINK","Canapé d'angle ","1 738,90 € ","dont 10,00 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha&wid=450&hei=200&scl=0.9" );
+        myproduit1=new Produit("LINK","FAUTEUIL","439,90 $","dont 1,70 $ d'co part.","https://s7g8.scene7.com/is/image/FLY//4_A_77736205_77725384_77725478_0_0_77725475_77725590?wid=1486&hei=950&scl=0.7" );
+        myproduit2=new Produit("LINK","Canapé fixe","489,90 € ","dont 4,50 € d'éco part.","https://s7g8.scene7.com/is/image/FLY//2_B_77736192_77725408_77735419_0_0_77735418_77725592?wid=1486&hei=950&scl=0.8" );
+        myproduit3=new Produit("LINK","Canapé d'angle fixe","1 128,90 € ","dont 9,00 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//1_B_77736192_77725402_77725412_0_77725500_77725499_77725592?wid=2000&hei=950&scl=0.96" );
+        myproduit4=new Produit("LINK","Canapé convertible","829,90 €","dont 5,50 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//3_B_77736221_77735505_77735650_0_0_77735649_77725592?wid=1486&hei=950&scl=0.8" );
+        myproduit5=new Produit("LINK","Canapé d'angle ","1 738,90 € ","dont 10,00 € d'éco part. ","https://s7g8.scene7.com/is/image/FLY//5_B_77736221_77735509_77735540_0_77735646_77735645_77725592?wid=1486&hei=950&scl=0.99" );
 
 //REMPLIR LISTE ARTICLE
         //liste fauteuil matiere

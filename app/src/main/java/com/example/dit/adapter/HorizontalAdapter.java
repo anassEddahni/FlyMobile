@@ -1,10 +1,12 @@
 package com.example.dit.adapter;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
 
     private SparseBooleanArray selectedItems;
     private List<String> horizontalList;
+    int row_index = 0;
 
     public HorizontalAdapter(List<String> horizontalList) {
         this.horizontalList = horizontalList;
@@ -26,9 +29,12 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
 
      class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView txtView;
+         public LinearLayout itemLinearLayout;
         public MyViewHolder(View view) {
             super(view);
             txtView = (TextView) view.findViewById(R.id.lblListItem);
+            itemLinearLayout = (LinearLayout) view.findViewById(R.id.item_group);
+
         }
 
          @Override
@@ -45,8 +51,26 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
     }
 
     @Override
-    public void onBindViewHolder( MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.txtView.setText(horizontalList.get(position));
+        holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#567845"));
+        holder.txtView.setTextColor(Color.parseColor("#ffffff"));
+        holder.itemLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                row_index=position;
+                notifyDataSetChanged();
+            }
+        });
+        if(row_index==position){
+            holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#567845"));
+            holder.txtView.setTextColor(Color.parseColor("#ffffff"));
+        }
+        else
+        {
+            holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+            holder.txtView.setTextColor(Color.parseColor("#000000"));
+        }
     }
 
     @Override
