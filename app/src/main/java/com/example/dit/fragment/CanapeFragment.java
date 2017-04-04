@@ -106,10 +106,10 @@ public class CanapeFragment extends Fragment {
         monObjetProg = (Programme) getActivity().getIntent().getSerializableExtra("maClasseProgramme");
         Log.d("====================",":"+monObjetCat.toString());
         Picasso.with(getActivity()).load("http://media-cdn.fly.fr/media/rubriques/780-gauche-salons2016.jpg").resize(3100,600).into(header);
-        nomProduit.setText(monObjetProg.getCategories().get(1).getProduit().getNom());
+        /*nomProduit.setText(monObjetProg.getCategories().get(1).getProduit().getNom());
         description.setText(monObjetProg.getCategories().get(1).getProduit().getDesc());
         prixProduit.setText(monObjetProg.getCategories().get(1).getProduit().getPrix());
-        prixEcoProduit.setText(monObjetProg.getCategories().get(1).getProduit().getPrixEco());
+        prixEcoProduit.setText(monObjetProg.getCategories().get(1).getProduit().getPrixEco());*/
         //Picasso.with(this).load(monObjetCat.getPhotoUrl()).into(imageArticle);
         Picasso.with(getActivity()).load(monObjetProg.getCategories().get(1).getProduit().getImageUrl()).into(imageProduit);
 

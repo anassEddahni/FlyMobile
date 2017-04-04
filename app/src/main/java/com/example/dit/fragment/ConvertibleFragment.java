@@ -112,10 +112,10 @@ public class ConvertibleFragment extends Fragment {
         prixEcoProduit.setText(monObjetCat.getProduit().getPrixEco());*/
 
         //Picasso.with(this).load(monObjetCat.getPhotoUrl()).into(imageArticle);
-        nomProduit.setText(monObjetProg.getCategories().get(3).getProduit().getNom());
+        /*nomProduit.setText(monObjetProg.getCategories().get(3).getProduit().getNom());
         description.setText(monObjetProg.getCategories().get(3).getProduit().getDesc());
         prixProduit.setText(monObjetProg.getCategories().get(3).getProduit().getPrix());
-        prixEcoProduit.setText(monObjetProg.getCategories().get(3).getProduit().getPrixEco());
+        prixEcoProduit.setText(monObjetProg.getCategories().get(3).getProduit().getPrixEco());*/
         Picasso.with(getActivity()).load(monObjetProg.getCategories().get(3).getProduit().getImageUrl()).into(imageProduit);
         /*
         // preparing list data

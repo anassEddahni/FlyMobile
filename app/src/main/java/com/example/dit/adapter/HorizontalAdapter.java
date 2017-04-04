@@ -63,7 +63,7 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
             }
         });
         if(row_index==position){
-            holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#567845"));
+            holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#aa2e2e2e"));
             holder.txtView.setTextColor(Color.parseColor("#ffffff"));
         }
         else

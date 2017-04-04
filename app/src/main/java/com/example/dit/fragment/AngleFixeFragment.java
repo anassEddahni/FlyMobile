@@ -107,10 +107,10 @@ public class AngleFixeFragment extends Fragment {
         monObjetProg = (Programme) getActivity().getIntent().getSerializableExtra("maClasseProgramme");
         Log.d("====================",":"+monObjetCat.toString());
         Picasso.with(getActivity()).load("http://media-cdn.fly.fr/media/rubriques/780-gauche-salons2016.jpg").resize(3100,600).into(header);
-        nomProduit.setText(monObjetProg.getCategories().get(2).getProduit().getNom());
+       /* nomProduit.setText(monObjetProg.getCategories().get(2).getProduit().getNom());
         description.setText(monObjetProg.getCategories().get(2).getProduit().getDesc());
         prixProduit.setText(monObjetProg.getCategories().get(2).getProduit().getPrix());
-        prixEcoProduit.setText(monObjetProg.getCategories().get(2).getProduit().getPrixEco());
+        prixEcoProduit.setText(monObjetProg.getCategories().get(2).getProduit().getPrixEco());*/
         Picasso.with(getActivity()).load(monObjetProg.getCategories().get(2).getProduit().getImageUrl()).into(imageProduit);
 /*
         // preparing list data

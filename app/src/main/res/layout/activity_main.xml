@@ -44,7 +44,7 @@
                 android:text="Chacun son mobilier !"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:typeface="serif" />
+                />
 
         </LinearLayout>
 

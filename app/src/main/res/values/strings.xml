@@ -45,4 +45,12 @@
     <string name="hide">Hide Sliding Up Layout</string>
     <string name="show">Show Sliding Up Layout</string>
     <string name="slide">This is a simple Sliding Up Layout</string>
+
+    <string-array name="nombre_article_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>

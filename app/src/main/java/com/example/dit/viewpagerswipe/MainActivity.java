@@ -1,6 +1,7 @@
 package com.example.dit.viewpagerswipe;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.dit.adapter.CustomPageAdapter;
 import com.example.dit.com.example.dit.entities.Article;
@@ -16,7 +18,6 @@ import com.example.dit.com.example.dit.entities.Categories;
 import com.example.dit.com.example.dit.entities.Produit;
 import com.example.dit.com.example.dit.entities.Programme;
 import com.squareup.picasso.Picasso;
-import com.viewpagerindicator.TitlePageIndicator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     Produit myproduit4;
     Produit myproduit5;
     int positionItem = 0;
+    TextView titlesStyle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
         button = (Button) findViewById(R.id.choisir);
         logoFly = (ImageView) findViewById(R.id.logo_fly);
+        titlesStyle = (TextView) findViewById(R.id.titre1);
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Sign_Painter_Gothic_JL.ttf");
+        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/SignPainterHouseScript.ttf");
+        titlesStyle.setTypeface(font);
 
         Picasso.with(this).load("https://s7g8.scene7.com/is/image/FLY//logo-myfly?fmt=png-alpha").into(logoFly);
 
