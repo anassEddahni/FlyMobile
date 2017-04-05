@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,62 +22,48 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
 
-    Programme oneArticle;
-    List<Programme> getData;
-    private ViewPager viewPager;
-    private ImageView logoFly;
-    String[] myListPicCanape ;
-    String[] myListPicChaise;
-    String[] myListPicTable;
-    Button button;
-    List<Categories> listCatChaise;
-    List<Categories> listCatCanape;
-    List<Categories> listCatTable;
+    private Programme oneArticle;
+    @BindView(R.id.viewpager) ViewPager viewPager;
+    @BindView(R.id.logo_fly) ImageView logoFly;
+    @BindView(R.id.titre1)TextView titlesStyle;
+    String[] myListPicCanape,myListPicChaise,myListPicTable ;
+    List<Categories> listCatChaise,listCatCanape,listCatTable;
     List<Attribut> listAttrCanape;
-    List<Article> listArtCanapeMatiere;
-    List<Article> listArtCanapeCouleur;
-    List<Article> listArtCanapeAccoudoirs;
-    List<Article> listArtCanapeConfort;
-    Produit myproduit1;
-    Produit myproduit2;
-    Produit myproduit3;
-    Produit myproduit4;
-    Produit myproduit5;
+    List<Article> listArtCanapeMatiere,listArtCanapeCouleur,listArtCanapeAccoudoirs,listArtCanapeConfort;
+    Produit myproduit1,myproduit2,myproduit3,myproduit4,myproduit5;
     int positionItem = 0;
-    TextView titlesStyle;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        button = (Button) findViewById(R.id.choisir);
-        logoFly = (ImageView) findViewById(R.id.logo_fly);
-        titlesStyle = (TextView) findViewById(R.id.titre1);
-
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Sign_Painter_Gothic_JL.ttf");
+        ButterKnife.bind(this);
+        //set style to textView
         Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/SignPainterHouseScript.ttf");
         titlesStyle.setTypeface(font);
 
         Picasso.with(this).load("https://s7g8.scene7.com/is/image/FLY//logo-myfly?fmt=png-alpha").into(logoFly);
-
         myListPicCanape = new String[]{"https://s7g8.scene7.com/is/image/FLY//fauteuil?fmt=png-alpha&wid=200&hei=200&scl=1.3", "https://s7g8.scene7.com/is/image/FLY//anglefixe?fmt=png-alpha&wid=170", "https://s7g8.scene7.com/is/image/FLY//angleconvertible?fmt=png-alpha&wid=170", "https://s7g8.scene7.com/is/image/FLY//convertible?fmt=png-alpha&wid=170", "https://s7g8.scene7.com/is/image/FLY//canape?fmt=png-alpha&wid=200"};
         myListPicChaise = new String[]{"https://s7g8.scene7.com/is/image/FLY//chaisetabouret?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//chaisehaute?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//tablebasse?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//tablerepas?fmt=png-alpha&wid=200"};
         myListPicTable = new String[]{"https://s7g8.scene7.com/is/image/FLY//1_50130_50138_1?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//1_50130_50141_1?fmt=png-alpha&wid=200", "https://s7g8.scene7.com/is/image/FLY//1_50130_50143_1?fmt=png-alpha&wid=200","https://s7g8.scene7.com/is/image/FLY//1_50137_50138_1?fmt=png-alpha&wid=200"};
 
         //recuperer les données
         List<Programme> getData = dataSource();
-        viewPager = (ViewPager)findViewById(R.id.viewpager);
+
         //ViewPager Adapter
         CustomPageAdapter mCustomPagerAdapter = new CustomPageAdapter(MainActivity.this, getData);
         viewPager.setAdapter(mCustomPagerAdapter);
+
         // SET indicator for view pager
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
-
 
         //recuperer la position courante de viewPager
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -125,14 +110,12 @@ public class MainActivity extends AppCompatActivity {
         listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725590?wid=101&hei=91","Design "));
         listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725591?wid=101&hei=91","Ferme"));
 
-
 //REMPLIR LISTES ATTRIBUTS
         listAttrCanape = new ArrayList<>();
         listAttrCanape.add(new Attribut("MATIERE",listArtCanapeMatiere));
         listAttrCanape.add(new Attribut("COULEUR",listArtCanapeCouleur));
         listAttrCanape.add(new Attribut("ACCOUDOIRS ET PIEDS",listArtCanapeAccoudoirs));
         listAttrCanape.add(new Attribut("CONFORT",listArtCanapeConfort));
-
 
 //REMPLIR LISTE CATEGORIES
 

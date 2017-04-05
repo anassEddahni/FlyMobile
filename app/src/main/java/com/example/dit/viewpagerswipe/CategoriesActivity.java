@@ -14,26 +14,30 @@ import com.example.dit.com.example.dit.entities.Programme;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
-import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.relex.circleindicator.CircleIndicator;
+
+import static com.example.dit.viewpagerswipe.R.id.viewpager_article;
 
 public class CategoriesActivity extends AppCompatActivity {
 
-    private int positionItem = 0;
-    private Categories oneCategorie;
-    private Programme monProgramme;
-    private ViewPager viewPagerArticle;
-    private Programme oneProgramme;
-    private List<Categories> listCategories ;
+     int positionItem = 0;
+     Categories oneCategorie;
+     Programme monProgramme;
+     @BindView(viewpager_article) ViewPager viewPagerArticle;
+     @BindView(R.id.logo_fly) ImageView logoFly;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article);
-        viewPagerArticle = (ViewPager) findViewById(R.id.viewpager_article);
-        ImageView logoFly = (ImageView) findViewById(R.id.logo_fly);
+        ButterKnife.bind(this);
+
         monProgramme = (Programme) getIntent().getSerializableExtra("maClasseProgramme");
         Picasso.with(this).load("https://s7g8.scene7.com/is/image/FLY//logo-myfly?fmt=png-alpha").into(logoFly);
+// set adapter viewpager
         CustomArticleAdapter mCustomArticleAdapter = new CustomArticleAdapter(CategoriesActivity.this, monProgramme);
         viewPagerArticle.setAdapter(mCustomArticleAdapter);
 // SET indicator for view pager

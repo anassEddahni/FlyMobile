@@ -1,7 +1,6 @@
 package com.example.dit.fragment;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,11 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.dit.adapter.ExpandableListAdapter;
 import com.example.dit.com.example.dit.entities.Article;
 import com.example.dit.com.example.dit.entities.Categories;
 import com.example.dit.com.example.dit.entities.Programme;
@@ -24,37 +20,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link AngleFixeFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AngleFixeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AngleFixeFragment extends Fragment {
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<Article>> listDataChild;
-    private Categories monObjetCat;
-    TextView nomProduit ;
-    ImageView imageProduit;
-    Bitmap bmp;
-    private Programme monObjetProg;
-    private int lastExpandedPosition = -1;
-    ImageView header;
-    private TextView description ;
-    private TextView prixProduit ;
-    private TextView prixEcoProduit ;
+    Categories monObjetCat;
+    @BindView(R.id.image_article)ImageView imageProduit;
+    @BindView(R.id.image_header) ImageView header;
+    Programme monObjetProg;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    static final String ARG_PARAM1 = "param1";
+    static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    String mParam1;
+    String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -94,42 +78,14 @@ public class AngleFixeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_home, container, false);
-        //expListView = (ExpandableListView)view.findViewById(R.id.lvExp);
-        imageProduit = (ImageView) view.findViewById(R.id.image_article);
-        nomProduit = (TextView) view.findViewById(R.id.nom_produit);
-        description = (TextView) view.findViewById(R.id.description_produit);
-        prixProduit = (TextView) view.findViewById(R.id.prix_produit);
-        prixEcoProduit = (TextView) view.findViewById(R.id.prix_eco_produit);
-        header = (ImageView) view.findViewById(R.id.image_header);
+        ButterKnife.bind(this,view);
         //get categories object
         getActivity().getIntent().getExtras().getString("image");
         monObjetCat= (Categories) getActivity().getIntent().getSerializableExtra("maClasseCategories");
         monObjetProg = (Programme) getActivity().getIntent().getSerializableExtra("maClasseProgramme");
         Log.d("====================",":"+monObjetCat.toString());
         Picasso.with(getActivity()).load("http://media-cdn.fly.fr/media/rubriques/780-gauche-salons2016.jpg").resize(3100,600).into(header);
-       /* nomProduit.setText(monObjetProg.getCategories().get(2).getProduit().getNom());
-        description.setText(monObjetProg.getCategories().get(2).getProduit().getDesc());
-        prixProduit.setText(monObjetProg.getCategories().get(2).getProduit().getPrix());
-        prixEcoProduit.setText(monObjetProg.getCategories().get(2).getProduit().getPrixEco());*/
         Picasso.with(getActivity()).load(monObjetProg.getCategories().get(2).getProduit().getImageUrl()).into(imageProduit);
-/*
-        // preparing list data
-        prepareListData();
-        //set data to expandable list
-        listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
-        // setting adapter to the list
-        expListView.setAdapter(listAdapter);
-        //collapse non-selected Group
-        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                if (lastExpandedPosition != -1
-                        && groupPosition != lastExpandedPosition) {
-                    expListView.collapseGroup(lastExpandedPosition);
-                }
-                lastExpandedPosition = groupPosition;
-            }
-        });*/
 
         return view;
     }
@@ -144,12 +100,6 @@ public class AngleFixeFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-       /* if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
     }
 
     @Override
@@ -158,16 +108,6 @@ public class AngleFixeFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
@@ -181,11 +121,6 @@ public class AngleFixeFragment extends Fragment {
             listDataHeader.add(monObjetCat.getAttributList().get(i).getNom());
         }
 
-       /* for(int i = 0 ; i<monObjetCat.getAttributList().size();i++){
-            for(int j = 0 ; j < monObjetCat.getAttributList().get(i).getArticles().size();j++){
-                matiere.add(monObjetCat.getAttributList().get(i).getArticles().get(j));
-            }
-        }*/
         //ajouter les données aux fils
         //matiere
         matiere.add(monObjetCat.getAttributList().get(0).getArticles().get(0));

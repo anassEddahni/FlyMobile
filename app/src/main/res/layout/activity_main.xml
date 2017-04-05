@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="Chacun sa pesonnalité ," />
+                android:text="Chacun sa pesonnalité," />
 
             <TextView
                 android:id="@+id/titre1"
@@ -41,8 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Chacun son mobilier !"
-                android:textSize="20sp"
+                android:text="Chacun son mobilier!"
+                android:textSize="27sp"
                 android:textStyle="bold"
                 />
 
@@ -78,13 +78,13 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="481dp"
+            android:layout_height="464dp"
             android:scrollbars="none"></android.support.v4.view.ViewPager>
 
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/indicator"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="10dp"
             app:ci_drawable_unselected="@color/colorGrisFly"
             app:ci_drawable="@color/colorPrimary"
             app:ci_margin="15dp"/>

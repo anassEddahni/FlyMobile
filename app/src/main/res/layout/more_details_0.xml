@@ -2,14 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="175dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -78,54 +77,55 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="151dp"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/garantie"
-                android:layout_marginLeft="60dp"/>
+                android:layout_width="86dp"
+                android:layout_height="74dp"
+                android:layout_marginLeft="120dp"
+                app:srcCompat="@drawable/garantie" />
 
         </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-
-        android:background="#2e2e2e"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/camion"
-            android:layout_width="53dp"
-            android:layout_height="27dp"
-            android:src="@drawable/camion1" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="LIVRAISON SOUS 6 SEMAINES"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="177dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#2e2e2e"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/camion"
+                    android:layout_width="53dp"
+                    android:layout_height="27dp"
+                    android:src="@drawable/camion1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="LIVRAISON SOUS 6 SEMAINES"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="7sp"
+                    android:textStyle="bold" />
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-    <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/spinner"
-            android:layout_width="60dp"
-            android:layout_height="35dp"
-            android:layout_gravity="right"
-            android:layout_marginLeft="60dp"
-            android:background="@drawable/recycler_shape"/>
-</LinearLayout>
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spinner"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:layout_gravity="right"
+                android:layout_marginLeft="100dp"
+                 />
+
+            <!--android:background="@drawable/recycler_shape"-->
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

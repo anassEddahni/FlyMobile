@@ -1,7 +1,6 @@
 package com.example.dit.fragment;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,11 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.dit.adapter.ExpandableListAdapter;
 import com.example.dit.com.example.dit.entities.Article;
 import com.example.dit.com.example.dit.entities.Categories;
 import com.example.dit.com.example.dit.entities.Programme;
@@ -24,29 +20,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CanapeFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CanapeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class CanapeFragment extends Fragment {
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<Article>> listDataChild;
-    private Categories monObjetCat;
-    TextView nomProduit ;
-    ImageView imageProduit;
-    Bitmap bmp;
-    private Programme monObjetProg;
-    private int lastExpandedPosition = -1;
-    ImageView header;
-    private TextView description ;
-    private TextView prixProduit ;
-    private TextView prixEcoProduit ;
+    Categories monObjetCat;
+    Programme monObjetProg;
+    @BindView(R.id.image_article)ImageView imageProduit;
+    @BindView(R.id.image_header)ImageView header;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,17 +43,7 @@ public class CanapeFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public CanapeFragment() {
-        // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CanapeFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static CanapeFragment newInstance(String param1, String param2) {
         CanapeFragment fragment = new CanapeFragment();
@@ -93,43 +67,16 @@ public class CanapeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home, container, false);
-        expListView = (ExpandableListView)view.findViewById(R.id.lvExp);
-        imageProduit = (ImageView) view.findViewById(R.id.image_article);
-        nomProduit = (TextView) view.findViewById(R.id.nom_produit);
-        description = (TextView) view.findViewById(R.id.description_produit);
-        prixProduit = (TextView) view.findViewById(R.id.prix_produit);
-        prixEcoProduit = (TextView) view.findViewById(R.id.prix_eco_produit);
-        header = (ImageView) view.findViewById(R.id.image_header);
+        ButterKnife.bind(this,view);
         //get categories object
         getActivity().getIntent().getExtras().getString("image");
         monObjetCat= (Categories) getActivity().getIntent().getSerializableExtra("maClasseCategories");
         monObjetProg = (Programme) getActivity().getIntent().getSerializableExtra("maClasseProgramme");
         Log.d("====================",":"+monObjetCat.toString());
         Picasso.with(getActivity()).load("http://media-cdn.fly.fr/media/rubriques/780-gauche-salons2016.jpg").resize(3100,600).into(header);
-        /*nomProduit.setText(monObjetProg.getCategories().get(1).getProduit().getNom());
-        description.setText(monObjetProg.getCategories().get(1).getProduit().getDesc());
-        prixProduit.setText(monObjetProg.getCategories().get(1).getProduit().getPrix());
-        prixEcoProduit.setText(monObjetProg.getCategories().get(1).getProduit().getPrixEco());*/
-        //Picasso.with(this).load(monObjetCat.getPhotoUrl()).into(imageArticle);
         Picasso.with(getActivity()).load(monObjetProg.getCategories().get(1).getProduit().getImageUrl()).into(imageProduit);
-
         // preparing list data
         prepareListData();
-        //set data to expandable list
-        //listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
-        // setting adapter to the list
-        //expListView.setAdapter(listAdapter);
-        //collapse non-selected Group
-       /* expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                if (lastExpandedPosition != -1
-                        && groupPosition != lastExpandedPosition) {
-                    expListView.collapseGroup(lastExpandedPosition);
-                }
-                lastExpandedPosition = groupPosition;
-            }
-        });*/
 
         return view;
     }
@@ -144,12 +91,6 @@ public class CanapeFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-       /* if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
     }
 
     @Override
@@ -158,16 +99,6 @@ public class CanapeFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
@@ -181,12 +112,6 @@ public class CanapeFragment extends Fragment {
         for(int i = 0 ; i<monObjetCat.getAttributList().size();i++){
             listDataHeader.add(monObjetCat.getAttributList().get(i).getNom());
         }
-
-       /* for(int i = 0 ; i<monObjetCat.getAttributList().size();i++){
-            for(int j = 0 ; j < monObjetCat.getAttributList().get(i).getArticles().size();j++){
-                matiere.add(monObjetCat.getAttributList().get(i).getArticles().get(j));
-            }
-        }*/
 
         //ajouter les données aux fils
         //matiere
