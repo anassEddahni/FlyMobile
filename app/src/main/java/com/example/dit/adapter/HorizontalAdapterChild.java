@@ -60,12 +60,6 @@ public class HorizontalAdapterChild extends RecyclerView.Adapter<HorizontalAdapt
             }
         });
         Picasso.with(context).load(horizontalListChild.get(position).getImageUrl()).into(holder.imageChild);
-        holder.scb.setOnCheckedChangeListener(new SmoothCheckBox.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
-                Log.d("SmoothCheckBox", String.valueOf(isChecked));
-            }
-        });
 
     }
 
