@@ -69,9 +69,7 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
             holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#ffffff"));
             holder.txtView.setTextColor(Color.parseColor("#000000"));
         }
-        if(row_index == 0){
-            notifyDataSetChanged();
-        }
+
     }
 
     @Override

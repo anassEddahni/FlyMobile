@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_matiere"
+        android:title="matiere"
+        android:icon="@drawable/img1"
+        />
+    <item
+        android:id="@+id/navigation_couleur"
+        android:icon="@drawable/img1"
+        android:title="couleur" />
+    <item
+        android:id="@+id/navigation_accoudoirs"
+        android:icon="@drawable/img1"
+        android:title="accoudoirs" />
+
+    <item
+        android:id="@+id/navigation_confort"
+        android:icon="@drawable/img1"
+        android:title="confort" />
+
+
+</menu>

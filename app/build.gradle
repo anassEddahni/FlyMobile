@@ -50,5 +50,6 @@ dependencies {
     compile 'com.github.andyxialm:SmoothCheckBox:4d4825562b'
     compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.github.mancj:SlideUp-Android:2.2.1'
 }
 

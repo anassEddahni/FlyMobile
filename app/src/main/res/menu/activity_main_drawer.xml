@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_fauteuil"
+            android:title="@string/nav_fauteuil" />
+
+        <item
+            android:id="@+id/nav_canape"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/nav_canape" />
+
+        <item
+            android:id="@+id/nav_anglefixe"
+            android:icon="@drawable/camion1"
+            android:title="@string/nav_anglefixe" />
+
+        <item
+            android:id="@+id/nav_convertible"
+            android:icon="@drawable/fauteuil"
+            android:title="@string/nav_convertible" />
+
+        <item
+            android:id="@+id/nav_angleconvertible"
+            android:icon="@drawable/fauteuil"
+            android:title="@string/nav_angleconvertible" />
+    </group>
+
+
+    <item android:title="Categories">
+        <menu>
+            <item
+                android:id="@+id/nav_about_us"
+                android:title="@string/nav_about_us" />
+            <item
+                android:id="@+id/nav_privacy_policy"
+                android:title="@string/privacy_policy" />
+        </menu>
+    </item>
+
+</menu>
