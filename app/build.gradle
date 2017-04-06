@@ -27,6 +27,15 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/picasso-2.5.2.jar')
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    //indicator viewpager
+    //zoom
+    //bind
+    //checkbox animation
+    //recyclerview divider
+    
+
+
+    compile 'com.sothree.slidinguppanel:library:3.0.0'
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.android.support:design:25.3.0'
@@ -34,15 +43,12 @@ dependencies {
     compile 'com.sothree.slidinguppanel:library:3.0.0'
     compile 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
     compile 'com.chabbal:slidingdotsplash:1.0.2'
-    //indicator viewpager
     compile 'me.relex:circleindicator:1.2.2@aar'
-    //zoom
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
-    //bind
     compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    //checkbox animation
+    compile 'com.karumi:dividers:1.0.1'
     compile 'com.github.andyxialm:SmoothCheckBox:4d4825562b'
-
+    compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
 

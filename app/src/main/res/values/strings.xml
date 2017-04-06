@@ -1,7 +1,6 @@
 <resources>
 
 
-
     <string name="app_name">ViewPagerSwipe</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -52,4 +51,20 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+
+    <string-array name="list_array_magasin">
+        <item>Fly ANNECY</item>
+        <item>Fly CANNE</item>
+        <item>FLY EPINAL</item>
+        <item>FLY EVREUX</item>
+        <item>FLY AGEN</item>
+    </string-array>
+
+    <string-array name="list_array_civilité">
+        <item>Mr</item>
+        <item>Mme</item>
+        <item>Mlle</item>
+
+    </string-array>
+
 </resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dit.viewpagerswipe.CommandeActivity"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="495dp"
+        android:fadeScrollbars="false">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <LinearLayout
+      android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider votre "
+        android:layout_marginLeft="20dp"
+        android:textSize="17dp"/>
+        <TextView
+            android:id="@+id/configuration"
+            android:layout_width="197dp"
+            android:layout_height="wrap_content"
+            android:text="Configuration"
+            android:textSize="40sp"
+            android:textColor="@color/colorRedFly"
+            />
+    </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/form_civilite"
+                    android:layout_width="95dp"
+                    android:layout_height="30dp"
+                    android:text="Civilité *"
+                    />
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinner_civilite"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                     />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/form_nom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Nom" />
+
+            <EditText
+        android:id="@+id/form_prenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Prenom" />
+
+    <EditText
+        android:id="@+id/form_telephone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Telephone" />
+
+    <EditText
+        android:id="@+id/form_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="email" />
+
+    <EditText
+        android:id="@+id/form_adresse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Adresse" />
+
+    <EditText
+        android:id="@+id/form_codepostal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Code Postal" />
+
+    <EditText
+        android:id="@+id/form_ville"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Ville" />
+
+    <EditText
+        android:id="@+id/form_pays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Pays"
+        tools:text="France" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/form_magasin"
+                    android:layout_width="95dp"
+                    android:layout_height="30dp"
+                    android:text="Magasin *"
+                    />
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinner_magasin"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/bouton_commander"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorRedFly"
+        android:text=" >  Commander"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="30dp"
+        />
+</LinearLayout>

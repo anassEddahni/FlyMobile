@@ -53,9 +53,7 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.txtView.setText(horizontalList.get(position));
-        holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#567845"));
-        holder.txtView.setTextColor(Color.parseColor("#ffffff"));
-        holder.itemLinearLayout.setOnClickListener(new View.OnClickListener() {
+             holder.itemLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 row_index=position;
@@ -63,13 +61,16 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
             }
         });
         if(row_index==position){
-            holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#aa2e2e2e"));
-            holder.txtView.setTextColor(Color.parseColor("#ffffff"));
+            holder.itemLinearLayout.setBackgroundResource(R.drawable.recycler_shape);
+
         }
         else
         {
             holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#ffffff"));
             holder.txtView.setTextColor(Color.parseColor("#000000"));
+        }
+        if(row_index == 0){
+            notifyDataSetChanged();
         }
     }
 

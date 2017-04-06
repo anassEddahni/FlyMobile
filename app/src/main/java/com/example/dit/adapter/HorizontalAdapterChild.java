@@ -25,12 +25,16 @@ import cn.refactor.library.SmoothCheckBox;
 public class HorizontalAdapterChild extends RecyclerView.Adapter<HorizontalAdapterChild.MyViewHolderChild> {
     private List<Article> horizontalListChild;
     private Context context;
-    public HorizontalAdapterChild(List<Article> horizontalListChild,Context context) {
+    private RecyclerItemClickListener recyclerItemClickListener;
+
+    public HorizontalAdapterChild(List<Article> horizontalListChild, Context context, RecyclerItemClickListener recyclerItemClickListener) {
         this.horizontalListChild = horizontalListChild;
         this.context = context;
+        this.recyclerItemClickListener = recyclerItemClickListener;
     }
 
-    class MyViewHolderChild extends RecyclerView.ViewHolder {
+
+    public static class MyViewHolderChild extends RecyclerView.ViewHolder {
         public TextView txtView;
         public ImageView imageChild;
         public SmoothCheckBox scb;
@@ -51,22 +55,31 @@ public class HorizontalAdapterChild extends RecyclerView.Adapter<HorizontalAdapt
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolderChild holder, int position) {
-        //holder.txtView.setText(horizontalListChild.get(position).getNom());
-        holder.imageChild.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(final MyViewHolderChild holder, final int position) {
+        Picasso.with(context).load(horizontalListChild.get(position).getImageUrl()).into(holder.imageChild);
+        Article article = horizontalListChild.get(position);
+
+        holder.scb.setChecked(article.isChecked());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.scb.setChecked(true);
+                if(recyclerItemClickListener!= null){
+                    recyclerItemClickListener.itemClicked(position);
+                }
             }
         });
-        Picasso.with(context).load(horizontalListChild.get(position).getImageUrl()).into(holder.imageChild);
 
     }
-
-
 
     @Override
     public int getItemCount() {
         return horizontalListChild.size();
     }
+
+
+    public interface RecyclerItemClickListener{
+        void itemClicked(int position);
+    }
+
 }

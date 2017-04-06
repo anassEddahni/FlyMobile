@@ -95,18 +95,35 @@ public class MainActivity extends AppCompatActivity {
 //REMPLIR LISTE ARTICLE
         //liste fauteuil matiere
         listArtCanapeMatiere = new ArrayList<>();
+        listArtCanapeMatiere.add(new Article("https://s7g8.scene7.com/is/image/FLY//D?wid=101&hei=91","cuir",true));
+        listArtCanapeMatiere.add(new Article("https://s7g8.scene7.com/is/image/FLY//A?wid=101&hei=91","microfibre"));
         listArtCanapeMatiere.add(new Article("https://s7g8.scene7.com/is/image/FLY//D?wid=101&hei=91","cuir"));
         listArtCanapeMatiere.add(new Article("https://s7g8.scene7.com/is/image/FLY//A?wid=101&hei=91","microfibre"));
+        listArtCanapeMatiere.add(new Article("https://s7g8.scene7.com/is/image/FLY//D?wid=101&hei=91","cuir"));
+        listArtCanapeMatiere.add(new Article("https://s7g8.scene7.com/is/image/FLY//A?wid=101&hei=91","microfibre"));
+
         //liste fauteuil couleur
         listArtCanapeCouleur = new ArrayList<>();
+        listArtCanapeCouleur.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725254?wid=101&hei=91","Chamois",true));
+        listArtCanapeCouleur.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725256?wid=101&hei=91","Anthracite"));
+        listArtCanapeCouleur.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725254?wid=101&hei=91","Chamois"));
+        listArtCanapeCouleur.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725256?wid=101&hei=91","Anthracite"));
         listArtCanapeCouleur.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725254?wid=101&hei=91","Chamois"));
         listArtCanapeCouleur.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725256?wid=101&hei=91","Anthracite"));
         //liste accoudoirs/pieds
         listArtCanapeAccoudoirs = new ArrayList<>();
+        listArtCanapeAccoudoirs.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725492?wid=101&hei=91","Accoudoirs et pieds eban alu brossé ",true));
+        listArtCanapeAccoudoirs.add(new Article("https://s7g8.scene7.com/is/image/FLY//77735412?wid=101&hei=91","Accoudoirs et pieds matis wengé"));
+        listArtCanapeAccoudoirs.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725492?wid=101&hei=91","Accoudoirs et pieds eban alu brossé "));
+        listArtCanapeAccoudoirs.add(new Article("https://s7g8.scene7.com/is/image/FLY//77735412?wid=101&hei=91","Accoudoirs et pieds matis wengé"));
         listArtCanapeAccoudoirs.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725492?wid=101&hei=91","Accoudoirs et pieds eban alu brossé "));
         listArtCanapeAccoudoirs.add(new Article("https://s7g8.scene7.com/is/image/FLY//77735412?wid=101&hei=91","Accoudoirs et pieds matis wengé"));
         //liste confort
         listArtCanapeConfort = new ArrayList<>();
+        listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725590?wid=101&hei=91","Design ",true));
+        listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725591?wid=101&hei=91","Ferme"));
+        listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725590?wid=101&hei=91","Design "));
+        listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725591?wid=101&hei=91","Ferme"));
         listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725590?wid=101&hei=91","Design "));
         listArtCanapeConfort.add(new Article("https://s7g8.scene7.com/is/image/FLY//77725591?wid=101&hei=91","Ferme"));
 

@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:id="@+id/one_item_child"
-        android:layout_width="130dp"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="vertical">
 
@@ -16,17 +16,19 @@
             android:id="@+id/image_child"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/fauteuil"
-            android:onClick="checkItem"
-            />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp" />
 
         <cn.refactor.library.SmoothCheckBox
             android:id="@+id/scb"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:color_unchecked_stroke="@color/colorWhite"/>
+            app:color_unchecked_stroke="@color/colorWhite" />
 
         <!--<TextView
             android:id="@+id/lblListItem"

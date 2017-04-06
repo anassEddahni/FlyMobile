@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.dit.viewpagerswipe"
-    >
+    package="com.example.dit.viewpagerswipe">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"
-        />
+        android:xlargeScreens="true" />
 
     <application
         android:allowBackup="true"
@@ -22,26 +21,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:node="replace"
-        >
-        <activity android:name=".MainActivity"
-            >
+        tools:node="replace">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".CategoriesActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ProduitActivity"
+        <activity
+            android:name=".CategoriesActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".FullScreenActivity"
-            android:screenOrientation="portrait"></activity>
-
+        <activity
+            android:name=".ProduitActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CommandeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FullScreenActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
